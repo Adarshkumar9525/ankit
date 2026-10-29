@@ -149,11 +149,8 @@ export default function Home({ onOpenQuoteModal }) {
             {/* Left Column: Typography, Tagline, CTAs, Avatars */}
             <div className="lg:col-span-6 xl:col-span-6 pt-4 lg:pt-0">
               
-              {/* Badge 01 + Tagline */}
-              <div className="flex items-center gap-3.5 mb-6">
-                <span className="w-7 h-7 rounded-full bg-neutral-900 border border-white/20 text-white flex items-center justify-center text-xs font-bold tracking-tight shadow-sm shrink-0">
-                  01
-                </span>
+              {/* Category Tagline */}
+              <div className="flex items-center gap-2 mb-6">
                 <span className="text-xs uppercase font-semibold tracking-[0.2em] text-neutral-400">
                   CREATIVE &nbsp;|&nbsp; MARKETING &nbsp;|&nbsp; DIGITAL &nbsp;|&nbsp; GROWTH
                 </span>
@@ -278,11 +275,8 @@ export default function Home({ onOpenQuoteModal }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             
-            {/* Left Tag with 02 badge */}
-            <div className="flex items-center gap-3 shrink-0 md:pr-8 md:border-r md:border-neutral-300">
-              <span className="w-6 h-6 rounded-full bg-neutral-900 text-white flex items-center justify-center text-[11px] font-bold shrink-0">
-                02
-              </span>
+            {/* Left Tag */}
+            <div className="flex items-center gap-2 shrink-0 md:pr-8 md:border-r md:border-neutral-300">
               <span className="text-xs font-bold tracking-wider uppercase text-neutral-800">
                 TRUSTED BY BUSINESSES ACROSS INDUSTRIES
               </span>
@@ -327,10 +321,7 @@ export default function Home({ onOpenQuoteModal }) {
           {/* Header Row */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
-              <div className="flex items-center gap-2.5 mb-3">
-                <span className="w-6 h-6 rounded-full bg-neutral-900 text-white flex items-center justify-center text-[11px] font-bold">
-                  03
-                </span>
+              <div className="mb-3">
                 <span className="text-xs font-bold tracking-widest uppercase text-neutral-600">
                   OUR SERVICES
                 </span>
@@ -407,10 +398,7 @@ export default function Home({ onOpenQuoteModal }) {
           {/* Header & Filter Row */}
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
             <div>
-              <div className="flex items-center gap-2.5 mb-3">
-                <span className="w-6 h-6 rounded-full bg-neutral-900 text-white flex items-center justify-center text-[11px] font-bold">
-                  04
-                </span>
+              <div className="mb-3">
                 <span className="text-xs font-bold tracking-widest uppercase text-neutral-600">
                   FEATURED WORK
                 </span>
@@ -509,10 +497,7 @@ export default function Home({ onOpenQuoteModal }) {
           
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
             <div>
-              <div className="flex items-center gap-2.5 mb-3">
-                <span className="w-6 h-6 rounded-full bg-gold-400 text-dark-950 flex items-center justify-center text-[11px] font-bold">
-                  05
-                </span>
+              <div className="mb-3">
                 <span className="text-xs font-bold tracking-widest uppercase text-gold-300">
                   OUR PROCESS
                 </span>
@@ -532,8 +517,8 @@ export default function Home({ onOpenQuoteModal }) {
                 key={step.step}
                 className="bg-neutral-900/60 rounded-2xl p-6 border border-white/10 hover:border-gold-400/40 transition-all duration-300 relative group"
               >
-                <div className="font-syne font-black text-3xl text-gold-400/30 group-hover:text-gold-400 transition-colors mb-4">
-                  0{idx + 1}
+                <div className="w-8 h-8 rounded-lg bg-gold-400/10 border border-gold-400/20 flex items-center justify-center text-gold-400 mb-4 group-hover:bg-gold-400 group-hover:text-dark-950 transition-colors">
+                  <Sparkles className="w-4 h-4" />
                 </div>
                 <h3 className="font-syne font-bold text-lg text-white mb-2">
                   {step.title}
@@ -556,10 +541,7 @@ export default function Home({ onOpenQuoteModal }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 mb-3">
-              <span className="w-6 h-6 rounded-full bg-neutral-900 text-white flex items-center justify-center text-[11px] font-bold">
-                06
-              </span>
+            <div className="mb-3">
               <span className="text-xs font-bold tracking-widest uppercase text-neutral-600">
                 CLIENT TESTIMONIALS
               </span>
@@ -621,9 +603,6 @@ export default function Home({ onOpenQuoteModal }) {
         <div className="absolute inset-0 bg-gradient-to-r from-gold-400/5 via-transparent to-gold-400/5 pointer-events-none" />
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <span className="w-7 h-7 rounded-full bg-gold-400 text-dark-950 inline-flex items-center justify-center text-xs font-bold mb-4">
-            07
-          </span>
           <h2 className="font-syne font-extrabold text-3xl sm:text-5xl text-white tracking-tight">
             Ready to Build a Brand That Grows?
           </h2>
