@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUp, Mail, Phone, MessageCircle } from 'lucide-react';
-import { InstagramIcon } from './Icons';
+import { InstagramIcon, VisualsLogoMark } from './Icons';
 import { AGENCY_INFO, SERVICES_LIST } from '../data/agencyData';
 
 export default function Footer() {
@@ -12,7 +12,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-dark-950 border-t border-neutral-800 text-neutral-400 relative">
+    <footer className="bg-[#0A0B0D] border-t border-neutral-800 text-neutral-400 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">
@@ -20,14 +20,13 @@ export default function Footer() {
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
             <Link to="/" className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-gold-400 to-gold-700 p-0.5 shadow-gold-glow">
-                <div className="w-full h-full bg-dark-950 rounded-[6px] flex items-center justify-center">
-                  <span className="font-syne font-extrabold text-gold-accent text-xs">TV</span>
-                </div>
+              <VisualsLogoMark className="w-8 h-8 text-gold-400" />
+              <div className="flex items-baseline">
+                <span className="font-syne font-extrabold text-lg tracking-wider text-white">
+                  THEVISUALS<span className="text-gold-300">.</span>
+                </span>
+                <span className="text-[10px] text-neutral-400 font-semibold tracking-tighter ml-0.5">™</span>
               </div>
-              <span className="font-syne font-bold text-base tracking-wide text-white">
-                THEVISUAL<span className="text-gold-accent">.IN</span>
-              </span>
             </Link>
 
             <p className="text-sm text-neutral-300 max-w-sm font-light leading-relaxed">

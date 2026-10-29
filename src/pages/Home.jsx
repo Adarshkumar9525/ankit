@@ -1,340 +1,544 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, MessageCircle, ArrowRight, CheckCircle2, ShieldCheck, Zap, Layers, Sparkles, Globe, Palette, Film, Megaphone, Cpu } from 'lucide-react';
-import { AGENCY_INFO, SERVICES_LIST, PORTFOLIO_LIST, PROCESS_STEPS, WHY_CHOOSE_US } from '../data/agencyData';
+import { 
+  ArrowRight, 
+  ArrowUpRight, 
+  Play, 
+  Monitor, 
+  PenTool, 
+  Video, 
+  Palette, 
+  Cpu, 
+  CheckCircle2, 
+  Sparkles, 
+  Layers, 
+  Clock, 
+  TrendingUp, 
+  MessageCircle,
+  ExternalLink
+} from 'lucide-react';
+import { AGENCY_INFO, PROCESS_STEPS } from '../data/agencyData';
+import { 
+  InstagramIcon,
+  NikeLogo, 
+  ZomatoLogo, 
+  BoatLogo, 
+  AjioLogo, 
+  SpotifyLogo, 
+  SnapdealLogo, 
+  BharatPeLogo 
+} from '../components/Icons';
 
-export default function Home() {
-  const featuredServices = SERVICES_LIST.slice(0, 6);
-  const featuredPortfolio = PORTFOLIO_LIST.slice(0, 4);
+export default function Home({ onOpenQuoteModal }) {
+  const [activeFilter, setActiveFilter] = useState('All');
+
+  // Service cards matching Section 03 screenshot
+  const services = [
+    {
+      id: 'website-development',
+      title: 'Website Development',
+      desc: 'Modern, fast & conversion-focused websites',
+      icon: Monitor,
+      path: '/services/website-development'
+    },
+    {
+      id: 'logo-branding',
+      title: 'Logo & Branding',
+      desc: 'Unique identity for your business',
+      icon: PenTool,
+      path: '/services/logo-branding'
+    },
+    {
+      id: 'social-media-marketing',
+      title: 'Social Media Marketing',
+      desc: 'Strategy, content & ads that bring results',
+      icon: InstagramIcon,
+      path: '/services/social-media-marketing'
+    },
+    {
+      id: 'reel-shoot-video-editing',
+      title: 'Reel Shoot & Video Editing',
+      desc: 'High-quality videos for your brand',
+      icon: Video,
+      path: '/services/reel-shoot-video-editing'
+    },
+    {
+      id: 'graphic-design',
+      title: 'Graphic Design',
+      desc: 'Posters, banners, catalogs & more',
+      icon: Palette,
+      path: '/services/graphic-design'
+    },
+    {
+      id: 'ai-automation-solutions',
+      title: 'AI Automation & Solutions',
+      desc: 'Automate your business with AI tools',
+      icon: Cpu,
+      path: '/services/ai-automation-solutions'
+    }
+  ];
+
+  // Projects matching Section 04 screenshot
+  const projects = [
+    {
+      id: 'travel-agency-website',
+      category: 'Websites',
+      title: 'Website Design',
+      client: 'Travel Agency',
+      image: '/images/project-website.png',
+      hasPlay: false,
+      tag: 'Web Design'
+    },
+    {
+      id: 'festive-sale-campaign',
+      category: 'Social Media',
+      title: 'Social Media',
+      client: 'Clothing Brand',
+      image: '/images/project-social.png',
+      hasPlay: true,
+      tag: 'Festive Campaign'
+    },
+    {
+      id: 'restaurant-menu-design',
+      category: 'Graphics',
+      title: 'Menu Design',
+      client: 'Restaurant',
+      image: '/images/project-menu.png',
+      hasPlay: false,
+      tag: 'Print & Digital'
+    },
+    {
+      id: 'gym-brand-cinematic-reel',
+      category: 'Video Editing',
+      title: 'Reel Editing',
+      client: 'Gym Brand',
+      image: '/images/project-reel.png',
+      hasPlay: true,
+      tag: 'Cinematic Reel'
+    },
+    {
+      id: 'skyline-real-estate-branding',
+      category: 'Branding',
+      title: 'Branding',
+      client: 'Real Estate',
+      image: '/images/project-branding.png',
+      hasPlay: false,
+      tag: 'Identity Suite'
+    }
+  ];
+
+  const filteredProjects = activeFilter === 'All' 
+    ? projects 
+    : projects.filter(p => p.category === activeFilter);
+
+  const filters = ['All', 'Websites', 'Social Media', 'Branding', 'Video Editing', 'Graphics'];
 
   return (
-    <div className="pt-20">
+    <div className="bg-[#0C0D0E] text-neutral-100">
       
-      {/* 1. Hero Section with User's Uploaded Black & Gold Abstract Artwork */}
-      <section 
-        className="relative pt-24 pb-20 md:pt-36 md:pb-32 overflow-hidden transition-opacity duration-1000 animate-in fade-in"
-        style={{
-          backgroundImage: "url('/images/gold-abstract.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat"
-        }}
-      >
-        {/* Subtle black gradient overlay ensuring text readability while keeping gold light trails striking */}
-        <div className="absolute inset-0 bg-gradient-to-b from-dark-950/90 via-dark-950/60 to-dark-950 pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_30%,_rgba(7,7,9,0.75)_100%)] pointer-events-none" />
+      {/* ========================================================
+          SECTION 01: HERO SECTION
+          ======================================================== */}
+      <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden bg-[#0C0D0E]">
+        {/* Soft background glow */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gold-400/5 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="flex justify-center mb-8">
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full gold-badge backdrop-blur-md shadow-sm">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-accent opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-gold-400"></span>
-              </span>
-              <span className="text-xs uppercase tracking-wider font-semibold text-gold-accent">
-                {AGENCY_INFO.supportingTagline}
-              </span>
-            </div>
-          </div>
-
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-syne font-extrabold tracking-tight leading-[1.08] text-white">
-              We Build. We Create.{' '}
-              <span className="block mt-2 gold-text-gradient">
-                We Grow.
-              </span>
-            </h1>
-
-            <p className="mt-6 text-lg sm:text-xl text-neutral-300 max-w-2xl mx-auto leading-relaxed font-light">
-              From powerful websites and memorable branding to digital marketing and AI-powered business solutions, we help businesses build their digital presence.
-            </p>
-
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-              <Link
-                to="/start-a-project"
-                className="px-8 py-4 rounded-xl bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-dark-950 font-syne font-bold text-base shadow-gold-glow hover:shadow-gold-glow-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] flex items-center gap-3"
-              >
-                <span>Start a Project</span>
-                <ArrowUpRight className="w-5 h-5 stroke-[2.5]" />
-              </Link>
-
-              <Link
-                to="/portfolio"
-                className="px-8 py-4 rounded-xl bg-dark-850/90 hover:bg-dark-800 text-white font-medium text-base border border-neutral-700/60 hover:border-gold-400/50 backdrop-blur-md transition-all duration-300 flex items-center gap-2"
-              >
-                <span>Explore Our Work</span>
-              </Link>
-
-              <a
-                href={AGENCY_INFO.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-5 py-4 rounded-xl bg-emerald-950/50 hover:bg-emerald-900/60 text-emerald-300 font-medium text-base border border-emerald-500/30 backdrop-blur-md transition-all duration-300 flex items-center gap-2"
-              >
-                <MessageCircle className="w-5 h-5 text-emerald-400" />
-                <span>WhatsApp</span>
-              </a>
-            </div>
-          </div>
-
-          {/* Dedicated Premium Visual Section Showcasing the AI Art Installation Artwork */}
-          <div className="mt-12 sm:mt-16 relative rounded-3xl overflow-hidden border border-gold-400/40 shadow-card-dark aspect-[16/9] sm:aspect-[21/9] group bg-dark-900">
-            <img
-              src="/images/ai-installation.jpg"
-              alt="THEVISUAL.IN Creative Technology & AI Art Installation"
-              className="w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-105"
-              loading="eager"
-            />
-            {/* Soft dark luxury vignette overlay to blend with the obsidian & gold aesthetic */}
-            <div className="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/20 to-transparent pointer-events-none" />
-            <div className="absolute inset-0 bg-gradient-to-r from-dark-950/40 via-transparent to-dark-950/40 pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             
-            <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-8 flex flex-wrap items-center justify-between gap-4 z-10">
-              <div>
-                <span className="text-xs uppercase tracking-widest text-gold-accent font-semibold block mb-1">
-                  Creative Technology & AI Innovation
+            {/* Left Column: Typography, Tagline, CTAs, Avatars */}
+            <div className="lg:col-span-6 xl:col-span-6 pt-4 lg:pt-0">
+              
+              {/* Badge 01 + Tagline */}
+              <div className="flex items-center gap-3.5 mb-6">
+                <span className="w-7 h-7 rounded-full bg-neutral-900 border border-white/20 text-white flex items-center justify-center text-xs font-bold tracking-tight shadow-sm shrink-0">
+                  01
                 </span>
-                <h3 className="text-xl sm:text-2xl font-syne font-bold text-white">
-                  Ideas into Digital.
-                </h3>
+                <span className="text-xs uppercase font-semibold tracking-[0.2em] text-neutral-400">
+                  CREATIVE &nbsp;|&nbsp; MARKETING &nbsp;|&nbsp; DIGITAL &nbsp;|&nbsp; GROWTH
+                </span>
               </div>
-              <div className="flex items-center gap-3 text-xs sm:text-sm text-neutral-300 bg-dark-950/85 backdrop-blur-md px-4 py-2.5 rounded-xl border border-gold-400/30 shadow-lg">
-                <span className="text-gold-accent font-bold">13 Specialized Capabilities</span>
-                <span>•</span>
-                <span>Direct Founder Access (Ankit)</span>
-              </div>
-            </div>
-          </div>
 
-        </div>
-      </section>
+              {/* Main Headline */}
+              <h1 className="font-syne font-extrabold text-4xl sm:text-6xl lg:text-[68px] leading-[1.04] tracking-tight text-white">
+                WE CREATE<br />
+                BRANDS THAT<br />
+                <span className="text-[#D5BA93]">GROW.</span>
+              </h1>
 
-      {/* 2. Services Overview */}
-      <section className="py-24 bg-dark-900/60 border-t border-neutral-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-14">
-            <div>
-              <span className="text-xs uppercase tracking-widest text-gold-accent font-semibold">
-                What We Do
-              </span>
-              <h2 className="text-3xl sm:text-5xl font-syne font-extrabold text-white mt-2">
-                Services Engineered for Impact.
-              </h2>
-            </div>
-            <Link
-              to="/services"
-              className="mt-4 md:mt-0 text-sm font-bold text-gold-accent hover:text-white flex items-center gap-2"
-            >
-              <span>Explore All 13 Services</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
+              {/* Subheading */}
+              <p className="mt-6 text-base sm:text-lg text-neutral-300 font-light leading-relaxed max-w-lg">
+                Strategy. Design. Content. Technology.<br />
+                Everything your brand needs — in one place.
+              </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredServices.map((svc) => (
-              <div
-                key={svc.id}
-                className="rounded-2xl bg-dark-850/90 border border-neutral-800 p-8 hover:border-gold-400/40 transition-all duration-300 hover:-translate-y-1 shadow-card-dark flex flex-col justify-between group"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-5">
-                    <span className="text-xs font-semibold px-3 py-1 rounded-full bg-gold-400/10 text-gold-accent border border-gold-400/20">
-                      {svc.category}
-                    </span>
-                    <span className="text-xs text-neutral-400">{svc.timeline}</span>
+              {/* Action Buttons */}
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <button
+                  onClick={onOpenQuoteModal}
+                  className="px-8 py-3.5 rounded-full bg-[#EDE4D8] hover:bg-white text-neutral-900 font-bold text-sm tracking-wide transition-all duration-300 shadow-md hover:scale-[1.02] active:scale-[0.98] flex items-center gap-2.5"
+                >
+                  <span>Get a Quote</span>
+                  <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+                </button>
+
+                <Link
+                  to="/portfolio"
+                  className="px-7 py-3.5 rounded-full bg-white/5 hover:bg-white/10 text-white font-medium text-sm border border-white/25 hover:border-white/50 backdrop-blur-md transition-all duration-300 flex items-center gap-2.5"
+                >
+                  <span>Our Work</span>
+                  <div className="w-5 h-5 rounded-full border border-white/60 flex items-center justify-center">
+                    <Play className="w-2.5 h-2.5 fill-white text-white ml-0.5" />
                   </div>
-
-                  <h3 className="text-xl font-syne font-bold text-white group-hover:text-gold-light transition-colors mb-2">
-                    {svc.title}
-                  </h3>
-
-                  <p className="text-sm text-neutral-300 leading-relaxed font-light mb-6">
-                    {svc.shortDesc}
-                  </p>
-                </div>
-
-                <div className="pt-4 border-t border-neutral-800 flex items-center justify-between">
-                  <Link
-                    to={`/services/${svc.id}`}
-                    className="text-xs font-bold text-gold-accent hover:text-white flex items-center gap-1.5"
-                  >
-                    <span>View Details</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </Link>
-
-                  <a
-                    href={`https://wa.me/${AGENCY_INFO.rawPhone}?text=${encodeURIComponent(`Hi THEVISUAL.IN, I would like to inquire about ${svc.title}.`)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-emerald-400 hover:text-emerald-300 font-medium flex items-center gap-1"
-                  >
-                    <MessageCircle className="w-3.5 h-3.5" />
-                    <span>Inquire</span>
-                  </a>
-                </div>
+                </Link>
               </div>
-            ))}
-          </div>
 
-        </div>
-      </section>
-
-      {/* 3. Featured Portfolio (Genuine Concept Projects) */}
-      <section className="py-24 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
-            <div>
-              <span className="text-xs uppercase tracking-widest text-gold-accent font-semibold">
-                Our Work
-              </span>
-              <h2 className="text-3xl sm:text-5xl font-syne font-extrabold text-white mt-2">
-                Selected Works & Concepts.
-              </h2>
-            </div>
-            <p className="text-xs sm:text-sm text-neutral-400 max-w-sm mt-3 md:mt-0">
-              *Clearly labeled concept work showcasing our aesthetic standards, technical capability, and execution style.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {featuredPortfolio.map((project) => (
-              <Link
-                key={project.id}
-                to={`/portfolio/${project.id}`}
-                className="group rounded-3xl bg-dark-900 border border-neutral-800 hover:border-gold-400/40 overflow-hidden transition-all duration-300 shadow-card-dark block"
-              >
-                <div className="aspect-[16/10] overflow-hidden relative">
+              {/* Social Proof: 100+ Brands Trust Us */}
+              <div className="mt-10 pt-6 border-t border-white/10 flex items-center gap-4">
+                <div className="flex -space-x-2.5 overflow-hidden">
                   <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="inline-block h-10 w-10 rounded-full ring-2 ring-[#0C0D0E] object-cover"
+                    src="/images/avatar-1.jpg"
+                    alt="Brand Partner"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/30 to-transparent" />
-                  <div className="absolute top-4 left-4 flex gap-2">
-                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-dark-950/80 text-gold-accent border border-gold-400/30 backdrop-blur-md">
-                      {project.categoryLabel}
-                    </span>
-                    {project.isConcept && (
-                      <span className="px-3 py-1 rounded-full text-[11px] font-medium bg-neutral-900/80 text-neutral-300 border border-neutral-700 backdrop-blur-md">
-                        Concept Work
-                      </span>
-                    )}
-                  </div>
+                  <img
+                    className="inline-block h-10 w-10 rounded-full ring-2 ring-[#0C0D0E] object-cover"
+                    src="/images/avatar-2.jpg"
+                    alt="Brand Partner"
+                  />
+                  <img
+                    className="inline-block h-10 w-10 rounded-full ring-2 ring-[#0C0D0E] object-cover"
+                    src="/images/avatar-3.jpg"
+                    alt="Brand Partner"
+                  />
+                  <img
+                    className="inline-block h-10 w-10 rounded-full ring-2 ring-[#0C0D0E] object-cover"
+                    src="/images/avatar-4.jpg"
+                    alt="Brand Partner"
+                  />
+                  <img
+                    className="inline-block h-10 w-10 rounded-full ring-2 ring-[#0C0D0E] object-cover"
+                    src="/images/avatar-5.jpg"
+                    alt="Brand Partner"
+                  />
                 </div>
-
-                <div className="p-8">
-                  <h3 className="text-2xl font-syne font-bold text-white group-hover:text-gold-light transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-xs text-gold-accent font-semibold mt-1 mb-3">
-                    {project.type}
-                  </p>
-                  <p className="text-sm text-neutral-300 font-light line-clamp-2">
-                    {project.description}
-                  </p>
-                  <div className="mt-4 pt-4 border-t border-neutral-800 flex items-center justify-between text-xs">
-                    <span className="text-neutral-400">View Case Study & Scope</span>
-                    <span className="text-gold-accent font-bold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                      <span>Read More</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          <div className="mt-12 text-center">
-            <Link
-              to="/portfolio"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-dark-850 hover:bg-dark-800 text-white font-semibold text-sm border border-neutral-700 hover:border-gold-400 transition-colors"
-            >
-              <span>View All Portfolio Projects</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-        </div>
-      </section>
-
-      {/* 4. Why Choose THEVISUAL.IN */}
-      <section className="py-24 bg-dark-900/60 border-t border-neutral-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs uppercase tracking-widest text-gold-accent font-semibold">
-              The Value Proposition
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-syne font-extrabold text-white mt-2">
-              Why Choose THEVISUAL.IN
-            </h2>
-            <p className="mt-4 text-base text-neutral-300">
-              We bridge the gap between creative design, modern web engineering, and commercial results.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {WHY_CHOOSE_US.map((item, idx) => (
-              <div
-                key={idx}
-                className="p-8 rounded-2xl bg-dark-850/90 border border-neutral-800 hover:border-gold-400/40 transition-all duration-300 shadow-card-dark"
-              >
-                <div className="w-10 h-10 rounded-xl bg-gold-400/10 border border-gold-400/30 text-gold-accent flex items-center justify-center mb-5 font-syne font-bold">
-                  {idx + 1}
-                </div>
-                <h3 className="text-lg font-syne font-bold text-white mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-neutral-300 leading-relaxed font-light">
-                  {item.description}
-                </p>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* 5. How We Work (6-Step Process) */}
-      <section className="py-24 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs uppercase tracking-widest text-gold-accent font-semibold">
-              Our Methodology
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-syne font-extrabold text-white mt-2">
-              How We Work.
-            </h2>
-            <p className="mt-4 text-base text-neutral-300">
-              Our six-step process ensures structured planning, zero confusion, and consistent high-quality delivery.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {PROCESS_STEPS.map((step) => (
-              <div
-                key={step.step}
-                className="p-8 rounded-2xl bg-dark-900 border border-neutral-800 hover:border-gold-400/40 transition-all duration-300 shadow-card-dark group"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-gold-400 to-gold-600 text-dark-950 font-syne font-extrabold text-lg flex items-center justify-center shadow-gold-glow">
-                    {step.step}
-                  </div>
-                  <span className="text-xs uppercase tracking-wider text-neutral-500 font-semibold">
-                    Step {step.step}
+                <div>
+                  <span className="font-syne font-bold text-white text-base block leading-none">
+                    100+
+                  </span>
+                  <span className="text-xs text-neutral-400 font-medium">
+                    Brands Trust Us
                   </span>
                 </div>
-                <h3 className="text-2xl font-syne font-bold text-white group-hover:text-gold-light transition-colors">
+              </div>
+
+            </div>
+
+            {/* Right Column: Visual Setup with Cursive Script & 3D Workspace Photo */}
+            <div className="lg:col-span-6 xl:col-span-6 relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 group">
+                
+                {/* Script Overlay: Ideas Design Results */}
+                <div className="absolute top-6 left-6 z-20 pointer-events-none select-none">
+                  <span className="font-script text-3xl sm:text-4xl text-white/85 tracking-wide block drop-shadow-md -rotate-6">
+                    Ideas
+                  </span>
+                  <span className="font-script text-3xl sm:text-4xl text-white/85 tracking-wide block drop-shadow-md ml-3 -rotate-3">
+                    Design
+                  </span>
+                  <span className="font-script text-3xl sm:text-4xl text-white/85 tracking-wide block drop-shadow-md ml-6 -rotate-6">
+                    Results
+                  </span>
+                </div>
+
+                {/* Workspace photography with laptop, mug, notebook, plant */}
+                <img
+                  src="/images/hero-workspace.png"
+                  alt="Creative Agency Digital Workspace - THEVISUALS.™"
+                  className="w-full h-auto object-cover object-center transform group-hover:scale-102 transition-transform duration-700"
+                />
+
+                {/* Bottom Right: Scroll to explore */}
+                <div className="absolute bottom-4 right-4 z-20 hidden sm:flex items-center gap-1.5 text-[10px] tracking-widest uppercase font-bold text-neutral-400 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
+                  <span>SCROLL TO EXPLORE</span>
+                  <ArrowRight className="w-3 h-3 text-gold-300" />
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      {/* ========================================================
+          SECTION 02: TRUSTED BY BUSINESSES ACROSS INDUSTRIES
+          ======================================================== */}
+      <section className="bg-[#F1EEE9] text-neutral-900 border-y border-[#E3DFD5] py-4 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            
+            {/* Left Tag with 02 badge */}
+            <div className="flex items-center gap-3 shrink-0 md:pr-8 md:border-r md:border-neutral-300">
+              <span className="w-6 h-6 rounded-full bg-neutral-900 text-white flex items-center justify-center text-[11px] font-bold shrink-0">
+                02
+              </span>
+              <span className="text-xs font-bold tracking-wider uppercase text-neutral-800">
+                TRUSTED BY BUSINESSES ACROSS INDUSTRIES
+              </span>
+            </div>
+
+            {/* Client Brand Logos */}
+            <div className="flex items-center justify-between md:justify-around flex-wrap gap-6 sm:gap-8 flex-1 text-neutral-700 opacity-90">
+              <div className="hover:text-black hover:opacity-100 transition-all cursor-pointer">
+                <NikeLogo className="h-5 w-auto" />
+              </div>
+              <div className="hover:text-black hover:opacity-100 transition-all cursor-pointer">
+                <ZomatoLogo className="text-xl" />
+              </div>
+              <div className="hover:text-black hover:opacity-100 transition-all cursor-pointer">
+                <BoatLogo className="text-xl" />
+              </div>
+              <div className="hover:text-black hover:opacity-100 transition-all cursor-pointer">
+                <AjioLogo className="text-base" />
+              </div>
+              <div className="hover:text-black hover:opacity-100 transition-all cursor-pointer">
+                <SpotifyLogo className="text-sm" />
+              </div>
+              <div className="hover:text-black hover:opacity-100 transition-all cursor-pointer">
+                <SnapdealLogo className="text-sm" />
+              </div>
+              <div className="hover:text-black hover:opacity-100 transition-all cursor-pointer">
+                <BharatPeLogo className="text-sm" />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      {/* ========================================================
+          SECTION 03: OUR SERVICES
+          ======================================================== */}
+      <section id="services" className="bg-[#F1EEE9] text-neutral-900 pt-16 pb-20 border-b border-[#E3DFD5]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* Header Row */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+              <div className="flex items-center gap-2.5 mb-3">
+                <span className="w-6 h-6 rounded-full bg-neutral-900 text-white flex items-center justify-center text-[11px] font-bold">
+                  03
+                </span>
+                <span className="text-xs font-bold tracking-widest uppercase text-neutral-600">
+                  OUR SERVICES
+                </span>
+              </div>
+              <h2 className="font-syne font-extrabold text-3xl sm:text-4xl text-neutral-950 leading-tight">
+                Everything You Need<br />
+                to Build & Grow Your Brand
+              </h2>
+            </div>
+
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 max-w-md">
+              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
+                From strategy to execution, we provide end-to-end digital solutions for modern businesses.
+              </p>
+              <Link
+                to="/services"
+                className="shrink-0 inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-neutral-900 text-neutral-900 hover:bg-neutral-900 hover:text-white transition-all text-xs font-semibold"
+              >
+                <span>View All Services</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
+
+          {/* 6 Service Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+            {services.map((srv) => {
+              const IconComp = srv.icon;
+              return (
+                <Link
+                  key={srv.id}
+                  to={srv.path}
+                  className="bg-white rounded-2xl p-5 border border-[#E3DFD5] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group h-full"
+                >
+                  <div>
+                    {/* Top Icon & Small Circle Arrow */}
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="w-10 h-10 rounded-xl bg-neutral-100 flex items-center justify-center text-neutral-800 group-hover:bg-neutral-900 group-hover:text-white transition-colors">
+                        <IconComp className="w-5 h-5" />
+                      </div>
+                      <div className="w-6 h-6 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-500 group-hover:bg-neutral-900 group-hover:text-white transition-colors">
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </div>
+                    </div>
+
+                    <h3 className="font-syne font-bold text-sm text-neutral-950 group-hover:text-gold-600 transition-colors mb-2 leading-snug">
+                      {srv.title}
+                    </h3>
+
+                    <p className="text-xs text-neutral-500 leading-relaxed font-normal">
+                      {srv.desc}
+                    </p>
+                  </div>
+
+                  <div className="mt-4 pt-3 border-t border-neutral-100 flex items-center text-[11px] font-semibold text-neutral-700 group-hover:text-black">
+                    <span>Learn More</span>
+                    <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-0.5 transition-transform" />
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* ========================================================
+          SECTION 04: FEATURED WORK / RECENT PROJECTS
+          ======================================================== */}
+      <section id="portfolio" className="bg-[#F1EEE9] text-neutral-900 pt-16 pb-20 border-b border-[#E3DFD5]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* Header & Filter Row */}
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+            <div>
+              <div className="flex items-center gap-2.5 mb-3">
+                <span className="w-6 h-6 rounded-full bg-neutral-900 text-white flex items-center justify-center text-[11px] font-bold">
+                  04
+                </span>
+                <span className="text-xs font-bold tracking-widest uppercase text-neutral-600">
+                  FEATURED WORK
+                </span>
+              </div>
+              <h2 className="font-syne font-extrabold text-3xl sm:text-4xl text-neutral-950">
+                Our Recent Projects
+              </h2>
+              <p className="mt-2 text-xs sm:text-sm text-neutral-600 max-w-md">
+                Real brands. Real results. Take a look at some of our latest work.
+              </p>
+              
+              <div className="mt-4">
+                <Link
+                  to="/portfolio"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-neutral-950 hover:bg-neutral-800 text-white text-xs font-semibold transition-all shadow-sm"
+                >
+                  <span>View Full Portfolio</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Filter Tabs matching screenshot */}
+            <div className="flex flex-wrap items-center gap-2 bg-white/70 backdrop-blur-md p-1.5 rounded-full border border-[#E3DFD5] self-start lg:self-end">
+              {filters.map((f) => (
+                <button
+                  key={f}
+                  onClick={() => setActiveFilter(f)}
+                  className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all ${
+                    activeFilter === f
+                      ? 'bg-neutral-950 text-white shadow-sm'
+                      : 'text-neutral-600 hover:text-neutral-950 hover:bg-neutral-100'
+                  }`}
+                >
+                  {f}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* 5 Project Cards Horizontal Row matching screenshot */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+            {filteredProjects.map((proj) => (
+              <Link
+                key={proj.id}
+                to={`/portfolio`}
+                className="group flex flex-col"
+              >
+                {/* Thumbnail Container */}
+                <div className="relative aspect-square rounded-2xl overflow-hidden bg-neutral-200 border border-[#E3DFD5] shadow-sm group-hover:shadow-md transition-all">
+                  <img
+                    src={proj.image}
+                    alt={proj.title}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  />
+
+                  {/* Play Icon Overlay for Videos */}
+                  {proj.hasPlay && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
+                      <div className="w-9 h-9 rounded-full bg-white/90 text-neutral-950 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                        <Play className="w-3.5 h-3.5 fill-neutral-950 text-neutral-950 ml-0.5" />
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Corner Badge */}
+                  <div className="absolute top-2.5 right-2.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="w-6 h-6 rounded-full bg-white text-neutral-900 flex items-center justify-center shadow">
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card Title & Client */}
+                <div className="mt-3">
+                  <h3 className="font-syne font-bold text-sm text-neutral-950 group-hover:text-gold-600 transition-colors">
+                    {proj.title}
+                  </h3>
+                  <p className="text-xs text-neutral-500 font-medium">
+                    {proj.client}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* ========================================================
+          SECTION 05: HOW WE WORK (4-STEP PROCESS)
+          ======================================================== */}
+      <section id="process" className="py-20 bg-[#0C0D0E] text-white border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+            <div>
+              <div className="flex items-center gap-2.5 mb-3">
+                <span className="w-6 h-6 rounded-full bg-gold-400 text-dark-950 flex items-center justify-center text-[11px] font-bold">
+                  05
+                </span>
+                <span className="text-xs font-bold tracking-widest uppercase text-gold-300">
+                  OUR PROCESS
+                </span>
+              </div>
+              <h2 className="font-syne font-extrabold text-3xl sm:text-4xl text-white">
+                How We Bring Your Vision to Life
+              </h2>
+            </div>
+            <p className="text-sm text-neutral-400 max-w-md">
+              A refined four-stage methodology ensuring predictable excellence, rapid delivery, and transparent collaboration.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {PROCESS_STEPS.map((step, idx) => (
+              <div 
+                key={step.step}
+                className="bg-neutral-900/60 rounded-2xl p-6 border border-white/10 hover:border-gold-400/40 transition-all duration-300 relative group"
+              >
+                <div className="font-syne font-black text-3xl text-gold-400/30 group-hover:text-gold-400 transition-colors mb-4">
+                  0{idx + 1}
+                </div>
+                <h3 className="font-syne font-bold text-lg text-white mb-2">
                   {step.title}
                 </h3>
-                <p className="text-xs font-semibold text-gold-accent uppercase tracking-wider mt-1 mb-3">
-                  {step.phase}
-                </p>
-                <p className="text-sm text-neutral-300 leading-relaxed font-light">
+                <p className="text-xs text-neutral-400 leading-relaxed">
                   {step.description}
                 </p>
               </div>
@@ -344,43 +548,107 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. Final Call to Action */}
-      <section className="py-24 bg-gradient-to-b from-dark-900 to-dark-950 border-t border-neutral-800 relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gold-500/10 rounded-full blur-[140px] pointer-events-none" />
 
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
-          <span className="text-xs uppercase tracking-widest text-gold-accent font-semibold block mb-3">
-            Let's Collaborate
+      {/* ========================================================
+          SECTION 06: TESTIMONIALS & TRUST
+          ======================================================== */}
+      <section id="testimonials" className="py-20 bg-[#F1EEE9] text-neutral-900 border-b border-[#E3DFD5]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <div className="inline-flex items-center gap-2 mb-3">
+              <span className="w-6 h-6 rounded-full bg-neutral-900 text-white flex items-center justify-center text-[11px] font-bold">
+                06
+              </span>
+              <span className="text-xs font-bold tracking-widest uppercase text-neutral-600">
+                CLIENT TESTIMONIALS
+              </span>
+            </div>
+            <h2 className="font-syne font-extrabold text-3xl sm:text-4xl text-neutral-950">
+              Trusted by Ambitious Founders
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-white rounded-2xl p-7 border border-[#E3DFD5] shadow-sm flex flex-col justify-between">
+              <p className="text-sm text-neutral-700 italic leading-relaxed mb-6">
+                "THEVISUALS completely transformed our digital presence. Within 60 days of launching the new website and branding, our conversion rates tripled."
+              </p>
+              <div className="flex items-center gap-3 pt-4 border-t border-neutral-100">
+                <img src="/images/avatar-1.jpg" alt="Client" className="w-10 h-10 rounded-full object-cover" />
+                <div>
+                  <h4 className="font-syne font-bold text-xs text-neutral-950">Aarav Mehta</h4>
+                  <p className="text-[11px] text-neutral-500">Founder, Skyline Estates</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-7 border border-[#E3DFD5] shadow-sm flex flex-col justify-between">
+              <p className="text-sm text-neutral-700 italic leading-relaxed mb-6">
+                "Their video editing and reel production are cinematic tier. We saw an immediate surge in organic social engagement and follower loyalty."
+              </p>
+              <div className="flex items-center gap-3 pt-4 border-t border-neutral-100">
+                <img src="/images/avatar-2.jpg" alt="Client" className="w-10 h-10 rounded-full object-cover" />
+                <div>
+                  <h4 className="font-syne font-bold text-xs text-neutral-950">Priya Sharma</h4>
+                  <p className="text-[11px] text-neutral-500">Marketing Head, Zenith Apparel</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-7 border border-[#E3DFD5] shadow-sm flex flex-col justify-between">
+              <p className="text-sm text-neutral-700 italic leading-relaxed mb-6">
+                "Exceptional communication and direct founder involvement from Ankit. They don't just deliver files; they deliver real business growth."
+              </p>
+              <div className="flex items-center gap-3 pt-4 border-t border-neutral-100">
+                <img src="/images/avatar-4.jpg" alt="Client" className="w-10 h-10 rounded-full object-cover" />
+                <div>
+                  <h4 className="font-syne font-bold text-xs text-neutral-950">Rohan Kapoor</h4>
+                  <p className="text-[11px] text-neutral-500">Managing Director, Nova Tech</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+      {/* ========================================================
+          SECTION 07: HIGH-CONVERSION CTA BANNER
+          ======================================================== */}
+      <section className="py-20 bg-[#0C0D0E] text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-gold-400/5 via-transparent to-gold-400/5 pointer-events-none" />
+
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <span className="w-7 h-7 rounded-full bg-gold-400 text-dark-950 inline-flex items-center justify-center text-xs font-bold mb-4">
+            07
           </span>
-          <h2 className="text-3xl sm:text-6xl font-syne font-extrabold text-white">
-            Ready to Build Something Great?
+          <h2 className="font-syne font-extrabold text-3xl sm:text-5xl text-white tracking-tight">
+            Ready to Build a Brand That Grows?
           </h2>
-          <p className="mt-6 text-base sm:text-lg text-neutral-300 max-w-xl mx-auto font-light leading-relaxed">
-            Whether you need a high-converting website, luxury brand identity, or AI business automation, we are ready to bring your ideas into digital reality.
+          <p className="mt-4 text-base text-neutral-300 max-w-xl mx-auto font-light leading-relaxed">
+            Let's discuss your project today. Get custom strategy, tailored timelines, and direct founder support.
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              to="/start-a-project"
-              className="px-8 py-4 rounded-xl bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-dark-950 font-syne font-bold text-base shadow-gold-glow hover:shadow-gold-glow-lg transition-all duration-300 hover:scale-[1.02] flex items-center gap-2"
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <button
+              onClick={onOpenQuoteModal}
+              className="px-8 py-3.5 rounded-full bg-[#EDE4D8] hover:bg-white text-neutral-900 font-bold text-sm tracking-wide transition-all duration-300 shadow-md hover:scale-[1.02] flex items-center gap-2.5"
             >
-              <span>Start Your Project</span>
-              <ArrowUpRight className="w-5 h-5 stroke-[2.5]" />
-            </Link>
+              <span>Get a Quote</span>
+              <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+            </button>
 
             <a
               href={AGENCY_INFO.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 rounded-xl bg-emerald-950/60 hover:bg-emerald-900/60 text-emerald-300 font-semibold text-base border border-emerald-500/40 transition-all duration-300 flex items-center gap-2"
+              className="px-7 py-3.5 rounded-full bg-emerald-950/60 hover:bg-emerald-900/70 text-emerald-300 font-semibold text-sm border border-emerald-500/30 backdrop-blur-md transition-all flex items-center gap-2"
             >
-              <MessageCircle className="w-5 h-5 text-emerald-400" />
-              <span>Contact Us on WhatsApp</span>
+              <MessageCircle className="w-4 h-4 text-emerald-400" />
+              <span>WhatsApp Us Directly</span>
             </a>
-          </div>
-
-          <div className="mt-10 text-xs text-neutral-400">
-            Direct response from Founder <strong>Ankit (+91 9156694311)</strong> • No spam, honest timelines
           </div>
         </div>
       </section>

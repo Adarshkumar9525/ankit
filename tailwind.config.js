@@ -7,6 +7,21 @@ export default {
   theme: {
     extend: {
       colors: {
+        editorial: {
+          50: '#FAF9F6',
+          100: '#F5F2EB',
+          200: '#EFECE4',
+          DEFAULT: '#F1EEE9',
+          border: '#E3DFD5',
+        },
+        beige: {
+          50: '#FBF9F4',
+          100: '#F6F0E5',
+          200: '#EFE5D8',
+          300: '#E4D5C2',
+          400: '#D5BA93',
+          DEFAULT: '#EDE4D8',
+        },
         gold: {
           50: '#FBF8F0',
           100: '#F7F1DE',
@@ -35,6 +50,7 @@ export default {
         syne: ['Syne', 'sans-serif'],
         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
         display: ['Syne', '"Plus Jakarta Sans"', 'sans-serif'],
+        script: ['"Caveat"', 'cursive'],
       },
       boxShadow: {
         'gold-glow': '0 0 35px -5px rgba(213, 175, 99, 0.25)',

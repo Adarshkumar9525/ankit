@@ -49,7 +49,7 @@ export default function App() {
         {/* Dynamic Route Pages */}
         <main className="flex-1">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home onOpenQuoteModal={() => handleOpenQuote()} />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<ServicesList />} />
             <Route path="/services/:id" element={<ServiceDetail />} />
