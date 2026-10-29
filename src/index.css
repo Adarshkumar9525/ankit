@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #070709;
+    color: #F3F4F6;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom Gold Text and Gradients */
+.gold-text-gradient {
+  background: linear-gradient(135deg, #FFF6E0 0%, #E5BD70 45%, #C89B3C 85%, #9E7422 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-border-gradient {
+  border-image: linear-gradient(135deg, rgba(229, 189, 112, 0.6) 0%, rgba(213, 175, 99, 0.2) 50%, rgba(200, 155, 60, 0.5) 100%) 1;
+}
+
+.bg-glass {
+  background: rgba(18, 18, 23, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.bg-glass-card {
+  background: linear-gradient(145deg, rgba(24, 24, 32, 0.8) 0%, rgba(13, 13, 17, 0.9) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.gold-badge {
+  background: linear-gradient(135deg, rgba(213, 175, 99, 0.15) 0%, rgba(200, 155, 60, 0.05) 100%);
+  border: 1px solid rgba(229, 189, 112, 0.3);
+  color: #E5BD70;
+}
+
+/* Smooth custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #272733;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d5af63;
+}
+
+/* Subtle glow orb animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-15px) scale(1.05);
+  }
+}
+
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 10s ease-in-out infinite 3s;
+}
