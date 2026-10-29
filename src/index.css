@@ -57,20 +57,113 @@
   background: #d5af63;
 }
 
-/* Subtle glow orb animation */
-@keyframes float {
+/* ========================================================
+   THEVISUALS.IN HERO ANIMATIONS (Cinematic & High-Performance)
+   ======================================================== */
+
+/* 1. Continuous Floating Animation for Laptop/Brand Showcase (translateY(-12px), 5.5s loop) */
+@keyframes heroShowcaseFloat {
   0%, 100% {
-    transform: translateY(0px) scale(1);
+    transform: translateY(0px);
   }
   50% {
-    transform: translateY(-15px) scale(1.05);
+    transform: translateY(-12px);
   }
 }
 
-.animate-float {
-  animation: float 8s ease-in-out infinite;
+.hero-showcase-float {
+  animation: heroShowcaseFloat 5.5s ease-in-out infinite;
+  will-change: transform;
 }
 
-.animate-float-delayed {
-  animation: float 10s ease-in-out infinite 3s;
+/* 2. Slowly Moving Blurred Golden Radial Glow */
+@keyframes heroGlowDrift {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-14px, -12px) scale(1.12);
+    opacity: 0.85;
+  }
+}
+
+.hero-glow-pulse {
+  animation: heroGlowDrift 6.5s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* 3. Staggered Headline Lines Upward Reveal */
+@keyframes heroLineReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(115%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.hero-reveal-line-1 {
+  display: inline-block;
+  animation: heroLineReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
+  will-change: transform, opacity;
+}
+
+.hero-reveal-line-2 {
+  display: inline-block;
+  animation: heroLineReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.28s both;
+  will-change: transform, opacity;
+}
+
+.hero-reveal-line-3 {
+  display: inline-block;
+  animation: heroLineReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.44s both;
+  will-change: transform, opacity;
+}
+
+/* Graceful Fade-Up for Subheading, Actions & Social Proof */
+@keyframes heroSubtleFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-fade-tagline {
+  animation: heroSubtleFadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+}
+
+.hero-fade-subheading {
+  animation: heroSubtleFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.56s both;
+}
+
+.hero-fade-actions {
+  animation: heroSubtleFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.68s both;
+}
+
+.hero-fade-social {
+  animation: heroSubtleFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s both;
+}
+
+/* Accessibility: Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-showcase-float,
+  .hero-glow-pulse,
+  .hero-reveal-line-1,
+  .hero-reveal-line-2,
+  .hero-reveal-line-3,
+  .hero-fade-tagline,
+  .hero-fade-subheading,
+  .hero-fade-actions,
+  .hero-fade-social {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
 }

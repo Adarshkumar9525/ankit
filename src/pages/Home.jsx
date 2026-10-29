@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   ArrowRight, 
@@ -31,6 +31,41 @@ import {
 
 export default function Home({ onOpenQuoteModal }) {
   const [activeFilter, setActiveFilter] = useState('All');
+
+  // Subtle 3D Mouse Tilt State & Handler for Showcase on Desktop
+  const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+  const showcaseRef = useRef(null);
+
+  const handlePointerMove = (e) => {
+    // Only track real desktop mouse pointers (disable for touch/pen devices)
+    if (e.pointerType !== 'mouse') return;
+
+    // Respect user's prefers-reduced-motion preference
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    if (!showcaseRef.current) return;
+    const rect = showcaseRef.current.getBoundingClientRect();
+    
+    // Normalized coordinates from -1 to 1
+    const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+    const y = ((e.clientY - rect.top) / rect.height) * 2 - 1;
+
+    // Maximum rotation of approximately 3 degrees
+    const maxTilt = 3;
+    const rotateX = Math.max(-maxTilt, Math.min(maxTilt, -y * maxTilt));
+    const rotateY = Math.max(-maxTilt, Math.min(maxTilt, x * maxTilt));
+
+    setTilt({ rotateX, rotateY });
+    setIsHovered(true);
+  };
+
+  const handlePointerLeave = () => {
+    setIsHovered(false);
+    setTilt({ rotateX: 0, rotateY: 0 });
+  };
 
   // Service cards matching Section 03 screenshot
   const services = [
@@ -167,7 +202,7 @@ export default function Home({ onOpenQuoteModal }) {
           SECTION 01: HERO SECTION
           ======================================================== */}
       <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden bg-[#0C0D0E]">
-        {/* Soft background glow */}
+        {/* Soft ambient background glow */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gold-400/5 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -177,27 +212,33 @@ export default function Home({ onOpenQuoteModal }) {
             <div className="lg:col-span-6 xl:col-span-6 pt-4 lg:pt-0">
               
               {/* Category Tagline */}
-              <div className="flex items-center gap-2 mb-6">
+              <div className="flex items-center gap-2 mb-6 hero-fade-tagline">
                 <span className="text-xs uppercase font-semibold tracking-[0.2em] text-neutral-400">
                   CREATIVE &nbsp;|&nbsp; MARKETING &nbsp;|&nbsp; DIGITAL &nbsp;|&nbsp; GROWTH
                 </span>
               </div>
 
-              {/* Main Headline */}
+              {/* Main Headline with Staggered Upward Line Reveal */}
               <h1 className="font-syne font-extrabold text-4xl sm:text-6xl lg:text-[68px] leading-[1.04] tracking-tight text-white">
-                WE CREATE<br />
-                BRANDS THAT<br />
-                <span className="text-[#D5BA93]">GROW.</span>
+                <span className="block overflow-hidden pb-1">
+                  <span className="hero-reveal-line-1">WE CREATE</span>
+                </span>
+                <span className="block overflow-hidden pb-1">
+                  <span className="hero-reveal-line-2">BRANDS THAT</span>
+                </span>
+                <span className="block overflow-hidden pb-1">
+                  <span className="hero-reveal-line-3 text-[#D5BA93]">GROW.</span>
+                </span>
               </h1>
 
               {/* Subheading */}
-              <p className="mt-6 text-base sm:text-lg text-neutral-300 font-light leading-relaxed max-w-lg">
+              <p className="mt-6 text-base sm:text-lg text-neutral-300 font-light leading-relaxed max-w-lg hero-fade-subheading">
                 Strategy. Design. Content. Technology.<br />
                 Everything your brand needs — in one place.
               </p>
 
               {/* Action Buttons */}
-              <div className="mt-8 flex flex-wrap items-center gap-4">
+              <div className="mt-8 flex flex-wrap items-center gap-4 hero-fade-actions">
                 <button
                   onClick={onOpenQuoteModal}
                   className="px-8 py-3.5 rounded-full bg-[#EDE4D8] hover:bg-white text-neutral-900 font-bold text-sm tracking-wide transition-all duration-300 shadow-md hover:scale-[1.02] active:scale-[0.98] flex items-center gap-2.5"
@@ -218,7 +259,7 @@ export default function Home({ onOpenQuoteModal }) {
               </div>
 
               {/* Social Proof: 100+ Brands Trust Us */}
-              <div className="mt-10 pt-6 border-t border-white/10 flex items-center gap-4">
+              <div className="mt-10 pt-6 border-t border-white/10 flex items-center gap-4 hero-fade-social">
                 <div className="flex -space-x-2.5 overflow-hidden">
                   <img
                     className="inline-block h-10 w-10 rounded-full ring-2 ring-[#0C0D0E] object-cover"
@@ -260,34 +301,67 @@ export default function Home({ onOpenQuoteModal }) {
 
             {/* Right Column: Visual Setup with Cursive Script & 3D Workspace Photo */}
             <div className="lg:col-span-6 xl:col-span-6 relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 group">
-                
-                {/* Script Overlay: Ideas Design Results */}
-                <div className="absolute top-6 left-6 z-20 pointer-events-none select-none">
-                  <span className="font-script text-3xl sm:text-4xl text-white/85 tracking-wide block drop-shadow-md -rotate-6">
-                    Ideas
-                  </span>
-                  <span className="font-script text-3xl sm:text-4xl text-white/85 tracking-wide block drop-shadow-md ml-3 -rotate-3">
-                    Design
-                  </span>
-                  <span className="font-script text-3xl sm:text-4xl text-white/85 tracking-wide block drop-shadow-md ml-6 -rotate-6">
-                    Results
-                  </span>
-                </div>
-
-                {/* Workspace photography with laptop, mug, notebook, plant */}
-                <img
-                  src="/images/hero-workspace.png"
-                  alt="Creative Agency Digital Workspace - THEVISUALS.™"
-                  className="w-full h-auto object-cover object-center transform group-hover:scale-102 transition-transform duration-700"
+              
+              {/* Showcase 3D Perspective Wrapper & Mouse Tracker */}
+              <div
+                ref={showcaseRef}
+                onPointerMove={handlePointerMove}
+                onPointerLeave={handlePointerLeave}
+                className="relative"
+                style={{ perspective: '1200px' }}
+              >
+                {/* Subtle, slowly moving blurred golden radial glow behind the showcase */}
+                <div 
+                  className="absolute -inset-4 sm:-inset-10 rounded-3xl bg-[radial-gradient(ellipse_at_center,_rgba(229,189,112,0.22)_0%,_rgba(213,175,99,0.07)_50%,_transparent_75%)] blur-2xl pointer-events-none hero-glow-pulse -z-10"
+                  aria-hidden="true"
                 />
 
-                {/* Bottom Right: Scroll to explore */}
-                <div className="absolute bottom-4 right-4 z-20 hidden sm:flex items-center gap-1.5 text-[10px] tracking-widest uppercase font-bold text-neutral-400 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
-                  <span>SCROLL TO EXPLORE</span>
-                  <ArrowRight className="w-3 h-3 text-gold-300" />
+                {/* Subtle Desktop 3D Mouse-Tilt Container (max ~3deg) */}
+                <div
+                  className="transform-gpu will-change-transform"
+                  style={{
+                    transform: `rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg)`,
+                    transition: isHovered 
+                      ? 'transform 0.12s ease-out' 
+                      : 'transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)',
+                    transformStyle: 'preserve-3d'
+                  }}
+                >
+                  {/* Continuous Floating Animation (translateY(-12px), 5.5s loop) */}
+                  <div className="hero-showcase-float">
+                    <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 group">
+                      
+                      {/* Script Overlay: Ideas Design Results */}
+                      <div className="absolute top-6 left-6 z-20 pointer-events-none select-none">
+                        <span className="font-script text-3xl sm:text-4xl text-white/85 tracking-wide block drop-shadow-md -rotate-6">
+                          Ideas
+                        </span>
+                        <span className="font-script text-3xl sm:text-4xl text-white/85 tracking-wide block drop-shadow-md ml-3 -rotate-3">
+                          Design
+                        </span>
+                        <span className="font-script text-3xl sm:text-4xl text-white/85 tracking-wide block drop-shadow-md ml-6 -rotate-6">
+                          Results
+                        </span>
+                      </div>
+
+                      {/* Workspace photography with laptop, mug, notebook, plant */}
+                      <img
+                        src="/images/hero-workspace.png"
+                        alt="Creative Agency Digital Workspace - THEVISUALS.™"
+                        className="w-full h-auto object-cover object-center transform group-hover:scale-102 transition-transform duration-700"
+                      />
+
+                      {/* Bottom Right: Scroll to explore */}
+                      <div className="absolute bottom-4 right-4 z-20 hidden sm:flex items-center gap-1.5 text-[10px] tracking-widest uppercase font-bold text-neutral-400 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
+                        <span>SCROLL TO EXPLORE</span>
+                        <ArrowRight className="w-3 h-3 text-gold-300" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
               </div>
+
             </div>
 
           </div>
@@ -466,7 +540,7 @@ export default function Home({ onOpenQuoteModal }) {
             </div>
           </div>
 
-          {/* 5 Project Cards Horizontal Row matching screenshot */}
+          {/* 5 Project Cards Horizontal Row */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
             {filteredProjects.map((proj) => (
               <Link
@@ -539,7 +613,7 @@ export default function Home({ onOpenQuoteModal }) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {PROCESS_STEPS.map((step, idx) => (
+            {PROCESS_STEPS.map((step) => (
               <div 
                 key={step.step}
                 className="bg-neutral-900/60 rounded-2xl p-6 border border-white/10 hover:border-gold-400/40 transition-all duration-300 relative group"
