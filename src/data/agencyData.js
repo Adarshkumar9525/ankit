@@ -1,6 +1,6 @@
 export const AGENCY_INFO = {
-  name: "THEVISUAL.IN",
-  tagline: "We Build. We Create. We Grow.",
+  name: "THEVISUALS.IN",
+  tagline: "We Create. You Grow.",
   supportingTagline: "Your Complete Digital & Creative Partner.",
   brandStatement: "Ideas into Digital.",
   founder: "Ankit",

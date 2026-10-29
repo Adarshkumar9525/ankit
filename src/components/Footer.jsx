@@ -20,12 +20,18 @@ export default function Footer() {
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
             <Link to="/" className="flex items-center gap-2.5">
-              <VisualsLogoMark className="w-8 h-8 text-gold-400" />
-              <div className="flex items-baseline">
-                <span className="font-syne font-extrabold text-lg tracking-wider text-white">
-                  THEVISUALS<span className="text-gold-300">.</span>
+              <img 
+                src="/images/logo-symbol-gold.png" 
+                alt="THEVISUALS.IN Emblem" 
+                className="w-8 h-8 object-contain" 
+              />
+              <div className="flex flex-col">
+                <span className="font-syne font-extrabold text-base tracking-wider text-white leading-tight">
+                  THEVISUALS<span className="text-gold-300">.IN</span>
                 </span>
-                <span className="text-[10px] text-neutral-400 font-semibold tracking-tighter ml-0.5">™</span>
+                <span className="text-[8px] font-semibold tracking-widest text-neutral-400 uppercase leading-none mt-0.5">
+                  We Create · You Grow
+                </span>
               </div>
             </Link>
 

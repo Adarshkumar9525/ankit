@@ -41,14 +41,20 @@ export default function Navbar({ onOpenQuoteModal }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          {/* Brand Logo matching user screenshot */}
+          {/* Brand Logo with User's Official Emblem */}
           <Link to="/" className="flex items-center gap-2.5 group shrink-0">
-            <VisualsLogoMark className="w-8 h-8 text-gold-400 group-hover:scale-105 transition-transform duration-300" />
-            <div className="flex items-baseline">
-              <span className="font-syne font-extrabold text-lg tracking-wider text-white">
-                THEVISUALS<span className="text-gold-300">.</span>
+            <img 
+              src="/images/logo-symbol-gold.png" 
+              alt="THEVISUALS.IN Emblem" 
+              className="w-8 h-8 object-contain transition-transform duration-300 group-hover:scale-105" 
+            />
+            <div className="flex flex-col">
+              <span className="font-syne font-extrabold text-base tracking-wider text-white leading-tight flex items-center">
+                THEVISUALS<span className="text-gold-300">.IN</span>
               </span>
-              <span className="text-[10px] text-neutral-400 font-semibold tracking-tighter ml-0.5">™</span>
+              <span className="text-[8px] font-semibold tracking-widest text-neutral-400 uppercase leading-none mt-0.5">
+                We Create · You Grow
+              </span>
             </div>
           </Link>
 
