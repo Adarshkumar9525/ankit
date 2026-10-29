@@ -78,14 +78,14 @@ export default function Home({ onOpenQuoteModal }) {
     }
   ];
 
-  // Projects matching Section 04 screenshot
+  // High Definition Recent Projects from Unsplash
   const projects = [
     {
       id: 'travel-agency-website',
       category: 'Websites',
       title: 'Website Design',
       client: 'Travel Agency',
-      image: '/images/project-website.png',
+      image: '/images/project-travel-hd.jpg',
       hasPlay: false,
       tag: 'Web Design'
     },
@@ -94,7 +94,7 @@ export default function Home({ onOpenQuoteModal }) {
       category: 'Social Media',
       title: 'Social Media',
       client: 'Clothing Brand',
-      image: '/images/project-social.png',
+      image: '/images/project-fashion-hd.jpg',
       hasPlay: true,
       tag: 'Festive Campaign'
     },
@@ -103,7 +103,7 @@ export default function Home({ onOpenQuoteModal }) {
       category: 'Graphics',
       title: 'Menu Design',
       client: 'Restaurant',
-      image: '/images/project-menu.png',
+      image: '/images/project-gourmet-hd.jpg',
       hasPlay: false,
       tag: 'Print & Digital'
     },
@@ -112,7 +112,7 @@ export default function Home({ onOpenQuoteModal }) {
       category: 'Video Editing',
       title: 'Reel Editing',
       client: 'Gym Brand',
-      image: '/images/project-reel.png',
+      image: '/images/project-fitness-hd.jpg',
       hasPlay: true,
       tag: 'Cinematic Reel'
     },
@@ -121,9 +121,36 @@ export default function Home({ onOpenQuoteModal }) {
       category: 'Branding',
       title: 'Branding',
       client: 'Real Estate',
-      image: '/images/project-branding.png',
+      image: '/images/project-architecture-hd.jpg',
       hasPlay: false,
       tag: 'Identity Suite'
+    },
+    {
+      id: 'fintech-saas-platform',
+      category: 'Websites',
+      title: 'SaaS Platform',
+      client: 'Fintech Studio',
+      image: '/images/project-fintech-hd.jpg',
+      hasPlay: false,
+      tag: 'Web & Dashboard'
+    },
+    {
+      id: 'aurora-luxury-perfume',
+      category: 'Branding',
+      title: 'Luxury Perfume',
+      client: 'Aurora Paris',
+      image: '/images/project-perfume-hd.jpg',
+      hasPlay: false,
+      tag: 'Packaging & Brand'
+    },
+    {
+      id: 'music-festival-cinematic',
+      category: 'Video Editing',
+      title: 'Music Festival',
+      client: 'Solaris Beats',
+      image: '/images/project-festival-hd.jpg',
+      hasPlay: true,
+      tag: 'Aftermovie'
     }
   ];
 
