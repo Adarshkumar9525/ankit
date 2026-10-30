@@ -30,7 +30,7 @@ export default function Footer() {
                   THEVISUALS<span className="text-gold-300">.IN</span>
                 </span>
                 <span className="text-[8px] font-semibold tracking-widest text-neutral-400 uppercase leading-none mt-0.5">
-                  We Create · You Grow
+                  WE BUILD · WE CREATE · WE GROW
                 </span>
               </div>
             </Link>

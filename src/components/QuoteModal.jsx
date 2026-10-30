@@ -51,7 +51,7 @@ export default function QuoteModal({ isOpen, onClose, preselectedService }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-dark-950/85 backdrop-blur-md animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-[150] flex items-center justify-center p-4 sm:p-6 bg-dark-950/85 backdrop-blur-md animate-in fade-in duration-200">
       <div className="relative w-full max-w-2xl max-h-[92vh] overflow-y-auto bg-dark-900 border border-gold-400/40 rounded-3xl p-6 sm:p-8 shadow-card-dark text-left">
         
         {/* Close Button */}

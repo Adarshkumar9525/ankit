@@ -1,7 +1,7 @@
 export const AGENCY_INFO = {
   name: "THEVISUALS.IN",
-  tagline: "We Create. You Grow.",
-  supportingTagline: "Your Complete Digital & Creative Partner.",
+  tagline: "WE BUILD. WE CREATE. WE GROW.",
+  supportingTagline: "YOUR COMPLETE DIGITAL & CREATIVE PARTNER.",
   brandStatement: "Ideas into Digital.",
   founder: "Ankit",
   phone: "+91 9156694311",
