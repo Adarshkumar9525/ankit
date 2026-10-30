@@ -152,7 +152,7 @@ export default function Navbar({ onOpenQuoteModal }) {
               <span className="font-syne font-extrabold text-base tracking-wider text-white leading-tight flex items-center">
                 THEVISUALS<span className="text-[#E5BD70]">.IN</span>
               </span>
-              <span className="text-[8px] font-semibold tracking-widest text-neutral-400 uppercase leading-none mt-0.5">
+              <span className="text-[8px] font-semibold tracking-widest text-neutral-400 uppercase leading-none mt-0.5 hidden sm:block">
                 WE BUILD · WE CREATE · WE GROW
               </span>
             </div>
@@ -281,7 +281,7 @@ export default function Navbar({ onOpenQuoteModal }) {
           </nav>
 
           {/* Right Action Elements */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 shrink-0">
             
             {/* WhatsApp Quick Chat */}
             <a
@@ -295,25 +295,13 @@ export default function Navbar({ onOpenQuoteModal }) {
               <span>WhatsApp</span>
             </a>
 
-            {/* Golden "Start a Project" Button */}
-            <button
-              onClick={onOpenQuoteModal}
-              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold px-4 sm:px-6 py-2.5 rounded-full text-neutral-950 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#E5BD70]/25 hover:scale-[1.03] active:scale-[0.98] shrink-0"
-              style={{
-                background: 'linear-gradient(135deg, #FFF1D2 0%, #E5BD70 50%, #C89B3C 100%)',
-              }}
-            >
-              <span>Start a Project</span>
-              <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
-            </button>
-
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="xl:hidden p-2 rounded-lg text-neutral-300 hover:text-[#E5BD70] hover:bg-white/5 transition-colors"
+              className="xl:hidden p-2.5 rounded-xl text-neutral-200 hover:text-[#E5BD70] hover:bg-white/10 active:bg-white/15 transition-all shrink-0 border border-white/15 flex items-center justify-center"
               aria-label={mobileMenuOpen ? "Close Menu" : "Open Menu"}
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-6 h-6 text-[#E5BD70]" /> : <Menu className="w-6 h-6 text-white" />}
             </button>
           </div>
 
