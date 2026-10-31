@@ -101,27 +101,53 @@ export default function Home({ onOpenQuoteModal }) {
     <div className="bg-[#070709] text-neutral-100 overflow-x-hidden selection:bg-gold-400 selection:text-black">
       
       {/* ========================================================
-          SECTION 01: HERO SECTION
+          SECTION 01: HERO SECTION WITH FULL-SCREEN BACKGROUND IMAGE
           ======================================================== */}
       <section 
         id="hero" 
-        className="relative z-0 pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden bg-gradient-to-b from-[#070709] via-[#0B0C0E] to-[#070709]"
-        style={{ isolation: 'isolate' }}
+        className="relative z-0 min-h-[92vh] flex items-center justify-center pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-cover bg-center bg-no-repeat"
+        style={{ 
+          isolation: 'isolate',
+          backgroundImage: "url('/images/hero-bg-workspace.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
       >
+        {/* Dark Cinematic Gradient Overlay (45%–60% opacity with smooth edge feathering) */}
+        <div 
+          className="absolute inset-0 pointer-events-none" 
+          style={{
+            background: 'linear-gradient(180deg, rgba(7, 7, 9, 0.68) 0%, rgba(7, 7, 9, 0.50) 45%, rgba(7, 7, 9, 0.72) 80%, rgba(7, 7, 9, 0.96) 100%)',
+          }}
+        />
+
+        {/* Subtle Radial Golden Atmospheric Lighting for depth */}
+        <div 
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'radial-gradient(ellipse at center, rgba(229, 189, 112, 0.10) 0%, rgba(7, 7, 9, 0.35) 55%, rgba(7, 7, 9, 0.70) 100%)',
+          }}
+        />
+
         {/* Soft atmospheric centered background glow */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[550px] bg-gold-400/5 rounded-full blur-[170px] pointer-events-none" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-gold-400/10 rounded-full blur-[170px] pointer-events-none" />
+
+        {/* Top and Bottom Feathering / Vignette */}
+        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#070709]/80 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#070709] to-transparent pointer-events-none" />
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           
           {/* Category Tagline */}
           <div className="flex items-center justify-center mb-6 hero-fade-tagline">
-            <span className="text-xs uppercase font-semibold tracking-[0.24em] text-neutral-400 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/10">
+            <span className="text-xs uppercase font-semibold tracking-[0.24em] text-neutral-300 px-4 py-1.5 rounded-full bg-black/45 backdrop-blur-md border border-white/15 shadow-lg">
               CREATIVE &nbsp;|&nbsp; DIGITAL &nbsp;|&nbsp; TECHNOLOGY &nbsp;|&nbsp; GROWTH
             </span>
           </div>
 
-          {/* Main Headline: WE BUILD. WE CREATE. WE GROW. */}
-          <h1 className="font-syne font-extrabold text-4xl sm:text-6xl lg:text-7xl xl:text-[76px] leading-[1.06] tracking-tight text-white max-w-4xl mx-auto">
+          {/* Main Headline: WE BUILD. WE CREATE. WE GROW. (Using clamp() for fluid typography) */}
+          <h1 className="font-syne font-extrabold text-[clamp(2.25rem,6vw,4.75rem)] leading-[1.05] tracking-tight text-white max-w-4xl mx-auto drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
             <span className="block overflow-hidden pb-1">
               <span className="hero-reveal-line-1 flex justify-center gap-[0.25em]">
                 <InteractiveWord delay={0.12}>WE</InteractiveWord>
@@ -143,18 +169,18 @@ export default function Home({ onOpenQuoteModal }) {
           </h1>
 
           {/* Supporting Text */}
-          <p className="mt-7 text-base sm:text-xl text-neutral-300 font-light leading-relaxed max-w-2xl mx-auto hero-fade-subheading">
+          <p className="mt-7 text-base sm:text-lg md:text-xl text-neutral-200 font-light leading-relaxed max-w-2xl mx-auto drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] hero-fade-subheading">
             We transform ideas into powerful digital experiences through creative design, modern technology, and intelligent solutions.
           </p>
 
           {/* Action Buttons */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4 hero-fade-actions">
+          <div className="mt-9 flex flex-wrap items-center justify-center gap-4 hero-fade-actions">
             <button
               onClick={onOpenQuoteModal}
-              className="px-8 py-3.5 rounded-full text-neutral-950 font-extrabold text-sm tracking-wide transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-[1.03] active:scale-[0.98] flex items-center gap-2.5"
+              className="px-8 py-4 rounded-full text-neutral-950 font-extrabold text-sm tracking-wide transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-[1.03] active:scale-[0.98] flex items-center gap-2.5"
               style={{
                 background: 'linear-gradient(135deg, #FFF1D2 0%, #E5BD70 50%, #C89B3C 100%)',
-                boxShadow: '0 8px 25px rgba(229,189,112,0.25)'
+                boxShadow: '0 8px 30px rgba(229,189,112,0.35)'
               }}
             >
               <span>Start a Project</span>
@@ -163,7 +189,7 @@ export default function Home({ onOpenQuoteModal }) {
 
             <a
               href="#portfolio"
-              className="px-7 py-3.5 rounded-full bg-white/5 hover:bg-white/10 text-white font-medium text-sm border border-white/25 hover:border-white/50 backdrop-blur-md transition-all duration-300 flex items-center gap-2.5"
+              className="px-7 py-4 rounded-full bg-black/40 hover:bg-black/60 text-white font-medium text-sm border border-white/30 hover:border-white/60 backdrop-blur-md transition-all duration-300 flex items-center gap-2.5 shadow-lg hover:scale-[1.03]"
             >
               <span>Explore Our Work</span>
               <div className="w-5 h-5 rounded-full border border-white/60 flex items-center justify-center">
@@ -173,75 +199,77 @@ export default function Home({ onOpenQuoteModal }) {
           </div>
 
           {/* Social Proof: 100+ Brands Trust Us */}
-          <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-center gap-4 hero-fade-social">
-            <div className="flex -space-x-2.5 overflow-hidden">
-              <img
-                className="inline-block h-10 w-10 rounded-full ring-2 ring-[#0C0D0E] object-cover"
-                src="/images/avatar-1.jpg"
-                alt="Brand Partner"
-              />
-              <img
-                className="inline-block h-10 w-10 rounded-full ring-2 ring-[#0C0D0E] object-cover"
-                src="/images/avatar-2.jpg"
-                alt="Brand Partner"
-              />
-              <img
-                className="inline-block h-10 w-10 rounded-full ring-2 ring-[#0C0D0E] object-cover"
-                src="/images/avatar-3.jpg"
-                alt="Brand Partner"
-              />
-              <img
-                className="inline-block h-10 w-10 rounded-full ring-2 ring-[#0C0D0E] object-cover"
-                src="/images/avatar-4.jpg"
-                alt="Brand Partner"
-              />
-              <img
-                className="inline-block h-10 w-10 rounded-full ring-2 ring-[#0C0D0E] object-cover"
-                src="/images/avatar-5.jpg"
-                alt="Brand Partner"
-              />
-            </div>
-            <div className="text-left sm:text-left">
-              <span className="font-syne font-bold text-white text-base block leading-none">
-                100+
-              </span>
-              <span className="text-xs text-neutral-400 font-medium">
-                Brands Trust Us
-              </span>
+          <div className="mt-12 pt-8 border-t border-white/15 flex flex-col sm:flex-row items-center justify-center gap-4 hero-fade-social">
+            <div className="inline-flex items-center gap-4 bg-black/45 backdrop-blur-md px-5 py-2.5 rounded-full border border-white/10 shadow-xl">
+              <div className="flex -space-x-2.5 overflow-hidden">
+                <img
+                  className="inline-block h-9 w-9 rounded-full ring-2 ring-[#0C0D0E] object-cover"
+                  src="/images/avatar-1.jpg"
+                  alt="Brand Partner"
+                />
+                <img
+                  className="inline-block h-9 w-9 rounded-full ring-2 ring-[#0C0D0E] object-cover"
+                  src="/images/avatar-2.jpg"
+                  alt="Brand Partner"
+                />
+                <img
+                  className="inline-block h-9 w-9 rounded-full ring-2 ring-[#0C0D0E] object-cover"
+                  src="/images/avatar-3.jpg"
+                  alt="Brand Partner"
+                />
+                <img
+                  className="inline-block h-9 w-9 rounded-full ring-2 ring-[#0C0D0E] object-cover"
+                  src="/images/avatar-4.jpg"
+                  alt="Brand Partner"
+                />
+                <img
+                  className="inline-block h-9 w-9 rounded-full ring-2 ring-[#0C0D0E] object-cover"
+                  src="/images/avatar-5.jpg"
+                  alt="Brand Partner"
+                />
+              </div>
+              <div className="text-left">
+                <span className="font-syne font-bold text-white text-sm block leading-none">
+                  100+
+                </span>
+                <span className="text-[11px] text-neutral-300 font-medium">
+                  Brands Trust Us
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* Trust Metric Counters Row (NBT Reference UX) */}
-          <div className="mt-10 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 max-w-4xl mx-auto text-center">
+          {/* Trust Metric Counters Row (NBT Reference UX with backdrop glass card) */}
+          <div className="mt-10 pt-8 border-t border-white/15 grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 max-w-4xl mx-auto text-center bg-black/40 backdrop-blur-md rounded-2xl p-6 sm:p-7 border border-white/10 shadow-2xl">
             <div>
-              <span className="font-syne font-black text-2xl sm:text-3xl text-[#E5BD70] block leading-none">
+              <span className="font-syne font-black text-2xl sm:text-3xl text-[#E5BD70] block leading-none drop-shadow">
                 100+
               </span>
-              <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-neutral-400 font-semibold block mt-1.5">
+              <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-neutral-300 font-semibold block mt-1.5">
                 Projects Delivered
               </span>
             </div>
             <div>
-              <span className="font-syne font-black text-2xl sm:text-3xl text-white block leading-none">
+              <span className="font-syne font-black text-2xl sm:text-3xl text-white block leading-none drop-shadow">
                 99%
               </span>
-              <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-neutral-400 font-semibold block mt-1.5">
+              <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-neutral-300 font-semibold block mt-1.5">
                 Client Satisfaction
               </span>
             </div>
             <div>
-              <span className="font-syne font-black text-2xl sm:text-3xl text-[#E5BD70] block leading-none">
+              <span className="font-syne font-black text-2xl sm:text-3xl text-[#E5BD70] block leading-none drop-shadow">
                 7–14d
               </span>
-              <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-neutral-400 font-semibold block mt-1.5">
+              <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-neutral-300 font-semibold block mt-1.5">
                 Fast Turnaround
               </span>
             </div>
             <div>
-              <span className="font-syne font-black text-2xl sm:text-3xl text-white block leading-none">
+              <span className="font-syne font-black text-2xl sm:text-3xl text-white block leading-none drop-shadow">
                 24/7
               </span>
-              <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-neutral-400 font-semibold block mt-1.5">
+              <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-neutral-300 font-semibold block mt-1.5">
                 Direct Founder Care
               </span>
             </div>
