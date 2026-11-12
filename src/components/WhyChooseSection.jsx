@@ -5,39 +5,39 @@ export default function WhyChooseSection() {
   const reasons = [
     {
       num: '01',
-      title: 'Creative Thinking',
-      desc: 'We reject generic templates and cookie-cutter approaches. Every design begins with a blank slate, genuine curiosity, and a focus on creating a memorable brand identity.',
-      highlight: 'Distinctive Visual Identity'
+      title: 'Business-Focused Approach',
+      desc: 'We align every creative and digital activity directly with your commercial goals, customer growth, and business success.',
+      highlight: 'Commercial Impact'
     },
     {
       num: '02',
-      title: 'Modern Technology',
-      desc: 'We engineer using clean semantic code, modern frameworks (React, Next.js, Tailwind), and performant asset optimization to deliver sub-second load times.',
-      highlight: 'Built for Speed & Reliability'
+      title: 'Creative & Customised Solutions',
+      desc: 'No generic templates or one-size-fits-all formulas. We create tailored solutions that reflect your brand’s unique identity and story.',
+      highlight: 'Tailored Execution'
     },
     {
       num: '03',
-      title: 'Complete Digital Solutions',
-      desc: 'No need to coordinate between multiple disconnected freelancers. We handle brand design, web development, video editing, and social media under one roof.',
-      highlight: 'Unified Brand Cohesion'
+      title: 'Clear Communication & Collaboration',
+      desc: 'Direct founder collaboration, milestone-based updates, and transparent communication throughout your entire project.',
+      highlight: 'Direct Accountability'
     },
     {
       num: '04',
-      title: 'User-Focused Design',
-      desc: 'Aesthetics matter, but clarity drives conversions. Every interface is laid out with intuitive navigation, readable typography, and intentional customer journeys.',
-      highlight: 'Conversion-Optimized UX'
+      title: 'Strategic Content Planning',
+      desc: 'Structured content calendars, engaging post designs, and high-retention reel storytelling to engage your target audience consistently.',
+      highlight: 'Targeted Engagement'
     },
     {
       num: '05',
-      title: 'Transparent Communication',
-      desc: 'Work directly with founder Ankit and our core team. We provide milestone updates, clear deadlines, and honest feedback throughout the entire project lifecycle.',
-      highlight: 'Direct Founder Collaboration'
+      title: 'Focus on Brand Identity & Online Visibility',
+      desc: 'We work to make your brand more visible, recognizable, and deeply connected with the right audience across touchpoints.',
+      highlight: 'Brand Recognition'
     },
     {
       num: '06',
-      title: 'Tailored Business Solutions',
-      desc: 'Every business has distinct customer demographics and price points. We customize your digital presence to match your specific commercial goals.',
-      highlight: 'Engineered for Real Growth'
+      title: 'Continuous Improvement Based on Performance',
+      desc: 'We review campaign performance, analyse audience responses, and continuously identify opportunities to optimize and improve results.',
+      highlight: 'Performance-Driven'
     }
   ];
 
@@ -102,6 +102,16 @@ export default function WhyChooseSection() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Belief Callout Banner */}
+        <div className="mt-16 p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-gold-500/10 via-amber-500/10 to-transparent border border-gold-400/30 text-center max-w-4xl mx-auto">
+          <span className="text-xs uppercase tracking-widest text-[#E5BD70] font-bold block mb-2">
+            Our Belief
+          </span>
+          <p className="text-lg sm:text-2xl font-syne font-bold text-white leading-relaxed">
+            "We believe every business deserves the opportunity to build a strong digital presence, regardless of its size."
+          </p>
         </div>
 
       </div>

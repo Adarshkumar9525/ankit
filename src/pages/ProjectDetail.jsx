@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { ArrowLeft, ArrowUpRight, CheckCircle2, MessageCircle, Code, Layers } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, CheckCircle2, MessageCircle, ExternalLink } from 'lucide-react';
 import { PORTFOLIO_LIST, AGENCY_INFO } from '../data/agencyData';
 
 export default function ProjectDetail() {
@@ -113,6 +113,23 @@ export default function ProjectDetail() {
               </div>
 
               <div className="mt-8 pt-6 border-t border-neutral-800">
+                {project.liveUrl && (
+                  <div className="mb-4">
+                    <span className="text-xs uppercase tracking-wider text-neutral-400 font-bold block mb-2">
+                      Live Verification
+                    </span>
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-3 rounded-xl bg-gold-400 text-dark-950 font-bold text-xs flex items-center justify-center gap-2 hover:bg-gold-300 transition-colors shadow-gold-glow"
+                    >
+                      <span>{project.liveUrl.includes('instagram.com') ? 'View on Instagram' : 'Visit Live Website'}</span>
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                  </div>
+                )}
+
                 <span className="text-xs uppercase tracking-wider text-neutral-400 font-bold block mb-3">
                   Want a Similar Outcome?
                 </span>

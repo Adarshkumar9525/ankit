@@ -7,21 +7,53 @@ export default {
   theme: {
     extend: {
       colors: {
-        editorial: {
-          50: '#FAF9F6',
-          100: '#F5F2EB',
-          200: '#EFECE4',
-          DEFAULT: '#F1EEE9',
-          border: '#E3DFD5',
+        // Approved VISUALS Brand Palette (Design Brief Page 8)
+        paper: {
+          DEFAULT: '#F6F4EF',
+          50: '#FDFCFB',
+          100: '#F6F4EF',
+          200: '#EDE9DF',
+          300: '#DFD9CB',
         },
-        beige: {
-          50: '#FBF9F4',
-          100: '#F6F0E5',
-          200: '#EFE5D8',
-          300: '#E4D5C2',
-          400: '#D5BA93',
-          DEFAULT: '#EDE4D8',
+        ink: {
+          DEFAULT: '#202522',
+          900: '#131715',
+          800: '#202522',
+          700: '#2E3632',
+          600: '#424C46',
         },
+        'confident-blue': {
+          DEFAULT: '#315FCE',
+          hover: '#254BB8',
+          active: '#1E3F9E',
+          light: '#EEF3FF',
+          muted: '#527AE0',
+        },
+        'muted-slate': {
+          DEFAULT: '#66716B',
+          light: '#85928B',
+          dark: '#4B544F',
+          subtle: '#9EABA4',
+        },
+        'soft-sage': {
+          DEFAULT: '#E7EDE7',
+          50: '#F4F7F4',
+          100: '#E7EDE7',
+          200: '#D5DFD5',
+          300: '#BFCFBF',
+        },
+        'warm-amber': {
+          DEFAULT: '#E9B64A',
+          hover: '#D8A336',
+          light: '#FCF6E8',
+          subtle: '#F7E7C2',
+        },
+
+        // Shorthand direct aliases matching brief nomenclature
+        'warm-paper': '#F6F4EF',
+        'deep-ink': '#202522',
+        
+        // Legacy fallback palettes to preserve backward compatibility during incremental migration
         gold: {
           50: '#FBF8F0',
           100: '#F7F1DE',
@@ -31,11 +63,7 @@ export default {
           500: '#C89B3C',
           600: '#B0802B',
           700: '#8E6221',
-          800: '#734E1E',
-          900: '#5F3F1C',
           accent: '#E5BD70',
-          light: '#F5E4B7',
-          dark: '#936D26',
         },
         dark: {
           950: '#070709',
@@ -47,20 +75,29 @@ export default {
         }
       },
       fontFamily: {
+        // Approved typography: Manrope for headings, Inter for body/UI
+        manrope: ['Manrope', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        inter: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Manrope', 'Inter', 'sans-serif'],
+        // Legacy fonts retained
         syne: ['Syne', 'sans-serif'],
-        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-        display: ['Syne', '"Plus Jakarta Sans"', 'sans-serif'],
-        script: ['"Caveat"', 'cursive'],
+      },
+      maxWidth: {
+        // 1180–1220px content width limit per Brief Page 8
+        'content': '1220px',
       },
       boxShadow: {
-        'gold-glow': '0 0 35px -5px rgba(213, 175, 99, 0.25)',
-        'gold-glow-lg': '0 0 60px -10px rgba(229, 189, 112, 0.35)',
-        'card-dark': '0 10px 30px -10px rgba(0, 0, 0, 0.7)',
+        // Restrained subtle shadows per Brief Page 9 ("Use subtle borders and restrained shadows. Avoid heavy glow effects.")
+        'subtle': '0 1px 3px 0 rgba(32, 37, 34, 0.05), 0 1px 2px -1px rgba(32, 37, 34, 0.05)',
+        'card-warm': '0 4px 20px -2px rgba(32, 37, 34, 0.06), 0 2px 6px -1px rgba(32, 37, 34, 0.03)',
+        'card-hover': '0 12px 28px -4px rgba(32, 37, 34, 0.10), 0 4px 10px -2px rgba(32, 37, 34, 0.04)',
+        'button-blue': '0 4px 14px 0 rgba(49, 95, 206, 0.30)',
+        'button-blue-hover': '0 6px 20px 0 rgba(49, 95, 206, 0.40)',
       },
-      backgroundImage: {
-        'gold-gradient': 'linear-gradient(135deg, #F5E4B7 0%, #D5AF63 50%, #B0802B 100%)',
-        'gold-text': 'linear-gradient(135deg, #FFF1D2 0%, #E5BD70 50%, #C89B3C 100%)',
-        'dark-card': 'linear-gradient(180deg, rgba(24, 24, 32, 0.7) 0%, rgba(13, 13, 17, 0.85) 100%)',
+      borderRadius: {
+        'card': '16px',
+        'pill': '9999px',
       }
     },
   },

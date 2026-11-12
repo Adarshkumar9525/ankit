@@ -7,15 +7,6 @@ import {
   MessageCircle 
 } from 'lucide-react';
 import { AGENCY_INFO } from '../data/agencyData';
-import { 
-  NikeLogo, 
-  ZomatoLogo, 
-  BoatLogo, 
-  AjioLogo, 
-  SpotifyLogo, 
-  SnapdealLogo, 
-  BharatPeLogo 
-} from '../components/Icons';
 
 // Section Components
 import MovingStrip from '../components/MovingStrip';
@@ -287,51 +278,7 @@ export default function Home({ onOpenQuoteModal }) {
 
 
       {/* ========================================================
-          SECTION 03: TRUSTED BY BUSINESSES ACROSS INDUSTRIES
-          ======================================================== */}
-      <section className="bg-[#0B0C10] text-neutral-300 border-b border-white/5 py-6 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-            
-            {/* Left Tag */}
-            <div className="flex items-center gap-2 shrink-0 md:pr-8 md:border-r md:border-white/10">
-              <span className="text-xs font-bold tracking-widest uppercase text-neutral-400">
-                TRUSTED BY BUSINESSES ACROSS INDUSTRIES
-              </span>
-            </div>
-
-            {/* Client Brand Logos */}
-            <div className="flex items-center justify-between md:justify-around flex-wrap gap-6 sm:gap-8 flex-1 text-neutral-500">
-              <div className="hover:text-white transition-colors cursor-pointer">
-                <NikeLogo className="h-5 w-auto" />
-              </div>
-              <div className="hover:text-white transition-colors cursor-pointer">
-                <ZomatoLogo className="text-xl" />
-              </div>
-              <div className="hover:text-white transition-colors cursor-pointer">
-                <BoatLogo className="text-xl" />
-              </div>
-              <div className="hover:text-white transition-colors cursor-pointer">
-                <AjioLogo className="text-base" />
-              </div>
-              <div className="hover:text-white transition-colors cursor-pointer">
-                <SpotifyLogo className="text-sm" />
-              </div>
-              <div className="hover:text-white transition-colors cursor-pointer">
-                <SnapdealLogo className="text-sm" />
-              </div>
-              <div className="hover:text-white transition-colors cursor-pointer">
-                <BharatPeLogo className="text-sm" />
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-
-      {/* ========================================================
-          SECTION 04: ABOUT THEVISUALS.IN
+          SECTION 03: ABOUT THEVISUALS.IN
           ======================================================== */}
       <AboutSection onOpenQuoteModal={onOpenQuoteModal} />
 

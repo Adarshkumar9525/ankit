@@ -41,7 +41,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <div className="bg-dark-950 text-white min-h-screen flex flex-col font-sans selection:bg-gold-400 selection:text-dark-950">
+      <div className="bg-[#F6F4EF] text-[#202522] min-h-screen flex flex-col font-sans selection:bg-[#315FCE] selection:text-white">
         
         {/* Navigation Bar */}
         <Navbar onOpenQuoteModal={() => handleOpenQuote()} />

@@ -67,9 +67,13 @@ export default function PortfolioList() {
                     <span className="px-3 py-1 rounded-full text-xs font-semibold bg-dark-950/80 text-gold-accent border border-gold-400/30 backdrop-blur-md">
                       {item.categoryLabel}
                     </span>
-                    {item.isConcept && (
+                    {item.isConcept ? (
                       <span className="px-3 py-1 rounded-full text-[11px] font-medium bg-neutral-900/80 text-neutral-300 border border-neutral-700 backdrop-blur-md">
                         Concept Work
+                      </span>
+                    ) : (
+                      <span className="px-3 py-1 rounded-full text-[11px] font-medium bg-emerald-950/80 text-emerald-400 border border-emerald-500/40 backdrop-blur-md">
+                        Live Client Work
                       </span>
                     )}
                   </div>

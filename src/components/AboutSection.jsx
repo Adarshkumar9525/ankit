@@ -35,13 +35,14 @@ export default function AboutSection({ onOpenQuoteModal }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-16 sm:mb-20">
+        <div className="max-w-4xl mb-16 sm:mb-20">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold-400/10 border border-gold-400/30 text-[#E5BD70] text-xs font-semibold uppercase tracking-wider mb-4">
             <Sparkles className="w-3.5 h-3.5" />
             <span>About THEVISUALS.IN</span>
           </div>
           <h2 className="font-syne font-extrabold text-3xl sm:text-5xl lg:text-5xl text-white leading-[1.12] tracking-tight">
-            We Combine <span className="gold-text-gradient">Artistry</span> with Modern Engineering.
+            We Don't Just Build Your Digital Presence.{' '}
+            <span className="block mt-2 gold-text-gradient">We Help Your Business Grow.</span>
           </h2>
         </div>
 
@@ -79,15 +80,15 @@ export default function AboutSection({ onOpenQuoteModal }) {
           {/* Right Column: Company Overview & Pillars */}
           <div className="lg:col-span-6 space-y-6">
             <h3 className="font-syne font-bold text-2xl sm:text-3xl text-white leading-snug">
-              Your Complete Digital & Creative Partner.
+              Creative Ideas. Digital Impact. Business Growth.
             </h3>
 
             <p className="text-neutral-300 text-sm sm:text-base leading-relaxed font-light">
-              THEVISUALS.IN was founded with a singular purpose: to replace fragmented, slow agency models with a unified powerhouse for creative design, modern web development, and digital marketing.
+              THEVISUALS.IN is a creative digital marketing and business growth agency focused on helping businesses build a strong online presence, connect with their target audience, and grow in the digital world.
             </p>
 
             <p className="text-neutral-400 text-sm leading-relaxed">
-              We work collaboratively with forward-thinking businesses, ambitious startups, and retail brands to build digital assets that look extraordinary and function seamlessly. We focus on real craft, sensible architecture, and continuous performance.
+              We understand that every business has a different story, different goals, and different challenges. That's why we don't believe in one-size-fits-all marketing solutions. Our approach combines creativity, strategic thinking, digital marketing, and technology to turn your business goals into meaningful digital growth.
             </p>
 
             {/* 2x2 Highlights Grid */}

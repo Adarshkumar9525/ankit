@@ -1,43 +1,37 @@
 import React from 'react';
-import { Search, Compass, PenTool, CheckCircle, Rocket, TrendingUp, Sparkles } from 'lucide-react';
+import { Search, Compass, PenTool, Rocket, TrendingUp, Sparkles } from 'lucide-react';
 
 export default function ProcessSection() {
   const steps = [
     {
       num: '01',
-      title: 'Understand',
+      title: 'Understanding Your Business',
       icon: Search,
-      desc: 'We analyze your commercial goals, study audience demographics, inspect competitor gaps, and define precise functional parameters.',
+      desc: 'First, we understand your business, products, services, target audience, challenges, and goals.',
     },
     {
       num: '02',
-      title: 'Plan',
+      title: 'Planning & Strategy',
       icon: Compass,
-      desc: 'We construct detailed wireframes, user flow diagrams, creative moodboards, and deliverable sprint milestones.',
+      desc: 'Based on your requirements, we prepare a suitable marketing strategy and content plan.',
     },
     {
       num: '03',
-      title: 'Create',
+      title: 'Creative Development',
       icon: PenTool,
-      desc: 'Our design and engineering team develops custom visual identities, semantic React codebases, and cinematic video assets.',
+      desc: 'Our focus is on creating engaging content, professional designs, and digital campaigns that match your brand identity.',
     },
     {
       num: '04',
-      title: 'Review',
-      icon: CheckCircle,
-      desc: 'Rigorous cross-browser QA, mobile responsiveness checks, load time benchmarking, and structured client revision cycles.',
+      title: 'Execution & Management',
+      icon: Rocket,
+      desc: 'We execute the approved strategy, manage the required digital activities, and maintain consistency across your online platforms.',
     },
     {
       num: '05',
-      title: 'Deliver',
-      icon: Rocket,
-      desc: 'Production deployment with SSL certificates, technical SEO optimization, domain configuration, and master vector handoffs.',
-    },
-    {
-      num: '06',
-      title: 'Grow',
+      title: 'Monitoring & Improvement',
       icon: TrendingUp,
-      desc: 'Continuous performance tracking, Meta ad scaling, content refresh cadence, and automated inbound funnel upgrades.',
+      desc: 'We review campaign performance, analyse audience responses, and identify opportunities to improve our work.',
     },
   ];
 
@@ -55,10 +49,10 @@ export default function ProcessSection() {
             <span>Our Methodology</span>
           </div>
           <h2 className="font-syne font-extrabold text-3xl sm:text-5xl text-white tracking-tight leading-[1.14]">
-            How We Work: <span className="gold-text-gradient">The 6-Step Blueprint.</span>
+            How We Work: <span className="gold-text-gradient">A Structured Approach.</span>
           </h2>
           <p className="mt-4 text-sm sm:text-base text-neutral-400 leading-relaxed font-light">
-            A disciplined, transparent delivery framework engineered to eliminate guesswork and deliver measurable commercial results.
+            We believe that successful marketing starts with understanding the business.
           </p>
         </div>
 
@@ -67,7 +61,7 @@ export default function ProcessSection() {
           {/* Connecting Line */}
           <div className="absolute top-8 left-12 right-12 h-[2px] bg-gradient-to-r from-gold-400/10 via-[#E5BD70] to-gold-400/10 z-0" />
 
-          <div className="grid grid-cols-6 gap-4 relative z-10">
+          <div className="grid grid-cols-5 gap-4 relative z-10">
             {steps.map((step) => {
               const IconComponent = step.icon;
               return (
@@ -81,7 +75,7 @@ export default function ProcessSection() {
                     Step {step.num}
                   </span>
 
-                  <h3 className="font-syne font-bold text-lg text-white mb-2 group-hover:text-[#E5BD70] transition-colors">
+                  <h3 className="font-syne font-bold text-base text-white mb-2 group-hover:text-[#E5BD70] transition-colors">
                     {step.title}
                   </h3>
 

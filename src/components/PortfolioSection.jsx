@@ -1,101 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowUpRight, Play, Sparkles } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Play, Sparkles, ExternalLink } from 'lucide-react';
+import { PORTFOLIO_LIST } from '../data/agencyData';
 
 export default function PortfolioSection() {
   const [activeFilter, setActiveFilter] = useState('All');
 
-  const filters = ['All', 'Websites', 'Branding', 'Social Media', 'Video Production', 'AI Content'];
-
-  const projects = [
-    {
-      id: 'luxury-travel-portal',
-      title: 'Voyage Luxe Global',
-      category: 'Websites',
-      tag: 'Website Development',
-      badge: 'Client Project',
-      image: '/images/project-travel-hd.jpg',
-      desc: 'High-speed bespoke luxury travel booking and curation experience with dynamic itinerary builder.',
-    },
-    {
-      id: 'aurora-fashion-ecommerce',
-      title: 'Aura Maison Apparel',
-      category: 'Websites',
-      tag: 'E-Commerce Platform',
-      badge: 'Design Exploration',
-      image: '/images/project-fashion-hd.jpg',
-      desc: 'Editorial fashion web store with fluid lookbooks, interactive sizing calculators, and smooth checkout.',
-    },
-    {
-      id: 'gourmet-restaurant-branding',
-      title: 'Solstice Dining Club',
-      category: 'Branding',
-      tag: 'Brand Identity & Print',
-      badge: 'Client Project',
-      image: '/images/project-gourmet-hd.jpg',
-      desc: 'Complete fine-dining visual identity system, embossed stationery, typography guide, and digital menu.',
-    },
-    {
-      id: 'apex-fitness-campaign',
-      title: 'Apex Athletic Club',
-      category: 'Social Media',
-      tag: 'Social Media Growth',
-      badge: 'Client Project',
-      image: '/images/project-fitness-hd.jpg',
-      hasPlay: true,
-      desc: 'High-energy organic reel campaign, transformation storytelling, and targeted member acquisition.',
-    },
-    {
-      id: 'skyline-architecture-identity',
-      title: 'Monolith Architecture',
-      category: 'Branding',
-      tag: 'Corporate Identity',
-      badge: 'Design Exploration',
-      image: '/images/project-architecture-hd.jpg',
-      desc: 'Minimalist brand system for modern architects featuring geometric vector marks and portfolio curation.',
-    },
-    {
-      id: 'fintech-saas-dashboard',
-      title: 'Nova Financial Suite',
-      category: 'Websites',
-      tag: 'Fintech Platform & UI',
-      badge: 'Design Exploration',
-      image: '/images/project-fintech-hd.jpg',
-      desc: 'Next-generation web application interface for real-time portfolio management and crypto tracking.',
-    },
-    {
-      id: 'aurora-perfume-packaging',
-      title: 'Elysian Fragrances',
-      category: 'Branding',
-      tag: 'Luxury Packaging',
-      badge: 'Design Exploration',
-      image: '/images/project-perfume-hd.jpg',
-      desc: 'Sensory luxury packaging design, glass bottle 3D mockup, and tactile box embossing specifications.',
-    },
-    {
-      id: 'solaris-music-festival',
-      title: 'Solaris Sound Festival',
-      category: 'Video Production',
-      tag: 'Cinematic Reel & Film',
-      badge: 'Client Project',
-      image: '/images/project-festival-hd.jpg',
-      hasPlay: true,
-      desc: 'Fast-paced event recap reel with customized sound design, typography sync, and vibrant color grade.',
-    },
-    {
-      id: 'ai-synthesized-creative',
-      title: 'Synthetic Fashion Visuals',
-      category: 'AI Content',
-      tag: 'AI-Generated Campaign',
-      badge: 'AI Exploration',
-      image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80',
-      desc: 'Generative media explorations combining synthetic high-fashion models with surreal architectural backdrops.',
-    }
-  ];
+  const filters = ['All', 'Websites', 'Branding', 'Video Production'];
 
   const filteredProjects = activeFilter === 'All'
-    ? projects
-    : projects.filter(p => p.category === activeFilter);
+    ? PORTFOLIO_LIST
+    : PORTFOLIO_LIST.filter(p => p.category === activeFilter);
 
   return (
     <section id="portfolio" className="py-24 sm:py-32 bg-[#08080B] text-white relative overflow-hidden border-b border-white/5">
@@ -109,13 +24,13 @@ export default function PortfolioSection() {
           <div>
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gold-400/10 border border-gold-400/30 text-[#E5BD70] text-xs font-semibold uppercase tracking-wider mb-4">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Selected Portfolio</span>
+              <span>Selected Portfolio & Live Work</span>
             </div>
             <h2 className="font-syne font-extrabold text-3xl sm:text-5xl text-white tracking-tight leading-[1.12]">
-              Our Work & <span className="gold-text-gradient">Design Explorations.</span>
+              Our Work & <span className="gold-text-gradient">Client Deliverables.</span>
             </h2>
             <p className="mt-3 text-neutral-400 text-sm max-w-lg leading-relaxed font-light">
-              A curated selection of our commercial client deliverables and conceptual design explorations across digital touchpoints.
+              Explore our live commercial client platforms, responsive digital systems, brand identities, and high-impact social video reels.
             </p>
           </div>
 
@@ -163,13 +78,32 @@ export default function PortfolioSection() {
 
                 {/* Top Corner Badges */}
                 <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
-                  <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-black/70 backdrop-blur-md text-[#E5BD70] border border-gold-400/30">
+                  <span className={`text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full backdrop-blur-md border ${
+                    !item.isConcept
+                      ? 'bg-emerald-950/80 text-emerald-400 border-emerald-500/40'
+                      : 'bg-black/70 text-[#E5BD70] border-gold-400/30'
+                  }`}>
                     {item.badge}
                   </span>
 
-                  <div className="w-8 h-8 rounded-full bg-black/70 backdrop-blur-md text-white group-hover:bg-[#E5BD70] group-hover:text-black flex items-center justify-center transition-all duration-300 shadow">
-                    <ArrowUpRight className="w-4 h-4" />
-                  </div>
+                  {item.liveUrl ? (
+                    <a
+                      href={item.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-8 h-8 rounded-full bg-black/70 backdrop-blur-md text-white hover:bg-[#E5BD70] hover:text-black flex items-center justify-center transition-all duration-300 shadow z-10"
+                      title="Visit Live"
+                    >
+                      <ArrowUpRight className="w-4 h-4" />
+                    </a>
+                  ) : (
+                    <Link
+                      to={`/portfolio/${item.id}`}
+                      className="w-8 h-8 rounded-full bg-black/70 backdrop-blur-md text-white hover:bg-[#E5BD70] hover:text-black flex items-center justify-center transition-all duration-300 shadow z-10"
+                    >
+                      <ArrowUpRight className="w-4 h-4" />
+                    </Link>
+                  )}
                 </div>
 
                 {/* Video Play Overlay */}
@@ -185,14 +119,36 @@ export default function PortfolioSection() {
               {/* Card Meta Content */}
               <div className="p-6">
                 <span className="text-[11px] font-semibold text-[#E5BD70] uppercase tracking-wider block mb-1">
-                  {item.tag}
+                  {item.categoryLabel || item.tag}
                 </span>
-                <h3 className="font-syne font-bold text-xl text-white group-hover:text-[#E5BD70] transition-colors mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-light">
-                  {item.desc}
+                <Link to={`/portfolio/${item.id}`}>
+                  <h3 className="font-syne font-bold text-xl text-white group-hover:text-[#E5BD70] transition-colors mb-2">
+                    {item.title}
+                  </h3>
+                </Link>
+                <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-light line-clamp-2">
+                  {item.description || item.desc}
                 </p>
+
+                <div className="mt-4 pt-4 border-t border-white/5 flex items-center justify-between text-xs">
+                  <Link
+                    to={`/portfolio/${item.id}`}
+                    className="text-neutral-400 hover:text-white font-medium transition-colors"
+                  >
+                    View Case Study
+                  </Link>
+                  {item.liveUrl && (
+                    <a
+                      href={item.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#E5BD70] hover:underline font-semibold flex items-center gap-1"
+                    >
+                      <span>Live Link</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           ))}
