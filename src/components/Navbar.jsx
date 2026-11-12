@@ -117,7 +117,7 @@ export default function Navbar({ onOpenQuoteModal }) {
 
   // Secondary items placed inside the accessible hamburger menu drawer
   const secondaryLinks = [
-    { name: 'Technologies', target: 'technologies', path: '/#technologies', desc: 'Modern tech stack & scalable frameworks' },
+    { name: 'How We Work', target: 'process', path: '/#process', desc: 'Our structured 5-step growth methodology' },
     { name: 'Industries', target: 'industries', path: '/#industries', desc: 'Sectors & enterprise verticals we power' },
     { name: 'Engagement Models', target: 'engagement', path: '/#engagement', desc: 'Flexible dedicated teams & fixed-scope pods' },
     { name: 'Why Choose Us', target: 'why-choose-us', path: '/#why-choose-us', desc: 'Founder care, 7-14d speed & 99% satisfaction' }

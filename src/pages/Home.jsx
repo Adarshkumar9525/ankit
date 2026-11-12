@@ -12,7 +12,6 @@ import { AGENCY_INFO } from '../data/agencyData';
 import MovingStrip from '../components/MovingStrip';
 import AboutSection from '../components/AboutSection';
 import ServicesSection from '../components/ServicesSection';
-import TechStackSection from '../components/TechStackSection';
 import EngagementModels from '../components/EngagementModels';
 import WhyChooseSection from '../components/WhyChooseSection';
 import DigitalSolutions from '../components/DigitalSolutions';
@@ -290,13 +289,7 @@ export default function Home({ onOpenQuoteModal }) {
 
 
       {/* ========================================================
-          SECTION 06: TECHNOLOGIES & TOOLS (NBT REFERENCE UX)
-          ======================================================== */}
-      <TechStackSection onOpenQuoteModal={onOpenQuoteModal} />
-
-
-      {/* ========================================================
-          SECTION 07: INTELLIGENT DIGITAL SOLUTIONS
+          SECTION 06: INTELLIGENT DIGITAL SOLUTIONS
           ======================================================== */}
       <DigitalSolutions onOpenQuoteModal={onOpenQuoteModal} />
 
